@@ -1,0 +1,1 @@
+10mb.json taken from https://github.com/minhajuddin/benchmark-large-json-parsing/
