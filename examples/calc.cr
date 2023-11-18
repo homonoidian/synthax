@@ -103,7 +103,11 @@ env = {} of String => Float64
 
 while (print "calc> "; input = gets)
   begin
-    puts input.apply!(g, exact: true).map(Node).eval(env)
+    tree = input.apply!(g, exact: true)
+    pp tree
+    node = tree.map(Node)
+    pp node
+    puts node.eval(env)
   rescue e : Sthx::SyntaxError
     e.err.humanize(STDERR, color: Colorize.enabled?, readout: true)
     STDERR.puts

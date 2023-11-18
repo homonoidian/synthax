@@ -191,7 +191,7 @@ module Sthx
       io << ws << @id << " ⸢" << @begin << "-" << @begin + @span << "⸥ "
       unless @mappings.empty?
         io << '{'
-        @mappings.each do |k, v|
+        @mappings.join(io, ", ") do |(k, v)|
           io << '"' << k << "\" => "
           v.inspect(io)
         end
