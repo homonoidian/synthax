@@ -54,7 +54,8 @@ module Sthx
       # "(((())))".apply?(expr) # => Tree
       # "((())".apply?(expr)    # => nil
       # ```
-      def put(@rule : Rule)
+      def put(@rule : Rule) : self
+        self
       end
 
       def eval(ctx : Ctx) : Ctx | Err
