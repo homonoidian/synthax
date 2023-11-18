@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Crystal Docs 1.9.2">
+<meta name="crystal_docs.project_version" content="trunk">
+<meta name="crystal_docs.project_name" content="synthax">
+
+
+
+<link href="css/style.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="js/doc.js"></script>
+
+  <meta name="repository-name" content="synthax">
+  <title>synthax trunk</title>
+  <script type="text/javascript">
+  CrystalDocs.base_path = "";
+  </script>
+</head>
+<body>
+
+<svg class="hidden">
+  <symbol id="octicon-link" viewBox="0 0 16 16">
+    <path fill="currentColor" fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path>
+  </symbol>
+</svg>
+<input type="checkbox" id="sidebar-btn">
+<label for="sidebar-btn" id="sidebar-btn-label">
+  <svg class="open" xmlns="http://www.w3.org/2000/svg" height="2em" width="2em" viewBox="0 0 512 512"><title>Open Sidebar</title><path fill="currentColor" d="M80 96v64h352V96H80zm0 112v64h352v-64H80zm0 112v64h352v-64H80z"></path></svg>
+  <svg class="close" xmlns="http://www.w3.org/2000/svg" width="2em" height="2em" viewBox="0 0 512 512"><title>Close Sidebar</title><path fill="currentColor" d="m118.6 73.4-45.2 45.2L210.7 256 73.4 393.4l45.2 45.2L256 301.3l137.4 137.3 45.2-45.2L301.3 256l137.3-137.4-45.2-45.2L256 210.7Z"></path></svg>
+</label>
+<div class="sidebar">
+  <div class="sidebar-header">
+    <div class="search-box">
+      <input type="search" class="search-input" placeholder="Search..." spellcheck="false" aria-label="Search">
+    </div>
+
+    <div class="project-summary">
+      <h1 class="project-name">
+        <a href="index.html">
+          synthax
+        </a>
+      </h1>
+
+      <span class="project-version">
+        trunk
+      </span>
+    </div>
+  </div>
+
+  <div class="search-results hidden">
+    <ul class="search-list"></ul>
+  </div>
+
+  <div class="types-list">
+    <ul>
+  
+  <li class=" " data-id="synthax/Char" data-name="char">
+      <a href="Char.html">Char</a>
+      
+    </li>
+  
+  <li class=" " data-id="synthax/Range" data-name="range(b, e)">
+      <a href="Range.html">Range</a>
+      
+    </li>
+  
+  <li class="parent " data-id="synthax/Sthx" data-name="sthx">
+      <a href="Sthx.html">Sthx</a>
+      
+        <ul>
+  
+  <li class="parent " data-id="synthax/Sthx/Core" data-name="sthx::core">
+      <a href="Sthx/Core.html">Core</a>
+      
+        <ul>
+  
+  <li class=" " data-id="synthax/Sthx/Core/LinkedList" data-name="sthx::core::linkedlist(t)">
+      <a href="Sthx/Core/LinkedList.html">LinkedList</a>
+      
+    </li>
+  
+</ul>
+
+      
+    </li>
+  
+  <li class=" " data-id="synthax/Sthx/Ctx" data-name="sthx::ctx">
+      <a href="Sthx/Ctx.html">Ctx</a>
+      
+    </li>
+  
+  <li class=" " data-id="synthax/Sthx/DSL" data-name="sthx::dsl">
+      <a href="Sthx/DSL.html">DSL</a>
+      
+    </li>
+  
+  <li class=" " data-id="synthax/Sthx/Err" data-name="sthx::err">
+      <a href="Sthx/Err.html">Err</a>
+      
+    </li>
+  
+  <li class="parent " data-id="synthax/Sthx/Rule" data-name="sthx::rule">
+      <a href="Sthx/Rule.html">Rule</a>
+      
+        <ul>
+  
+  <li class=" " data-id="synthax/Sthx/Rule/Ahead" data-name="sthx::rule::ahead">
+      <a href="Sthx/Rule/Ahead.html">Ahead</a>
+      
+    </li>
+  
+  <li class=" " data-id="synthax/Sthx/Rule/Branch" data-name="sthx::rule::branch">
+      <a href="Sthx/Rule/Branch.html">Branch</a>
+      
+    </li>
+  
+  <li class=" " data-id="synthax/Sthx/Rule/Capture" data-name="sthx::rule::capture">
+      <a href="Sthx/Rule/Capture.html">Capture</a>
+      
+    </li>
+  
+  <li class=" " data-id="synthax/Sthx/Rule/Chain" data-name="sthx::rule::chain">
+      <a href="Sthx/Rule/Chain.html">Chain</a>
+      
+    </li>
+  
+  <li class=" " data-id="synthax/Sthx/Rule/Empty" data-name="sthx::rule::empty">
+      <a href="Sthx/Rule/Empty.html">Empty</a>
+      
+    </li>
+  
+  <li class=" " data-id="synthax/Sthx/Rule/FromRange" data-name="sthx::rule::fromrange">
+      <a href="Sthx/Rule/FromRange.html">FromRange</a>
+      
+    </li>
+  
+  <li class=" " data-id="synthax/Sthx/Rule/List" data-name="sthx::rule::list">
+      <a href="Sthx/Rule/List.html">List</a>
+      
+    </li>
+  
+  <li class=" " data-id="synthax/Sthx/Rule/Mapping" data-name="sthx::rule::mapping">
+      <a href="Sthx/Rule/Mapping.html">Mapping</a>
+      
+    </li>
+  
+  <li class=" " data-id="synthax/Sthx/Rule/One" data-name="sthx::rule::one">
+      <a href="Sthx/Rule/One.html">One</a>
+      
+    </li>
+  
+  <li class=" " data-id="synthax/Sthx/Rule/Refuse" data-name="sthx::rule::refuse">
+      <a href="Sthx/Rule/Refuse.html">Refuse</a>
+      
+    </li>
+  
+  <li class=" " data-id="synthax/Sthx/Rule/Repeat" data-name="sthx::rule::repeat">
+      <a href="Sthx/Rule/Repeat.html">Repeat</a>
+      
+    </li>
+  
+</ul>
+
+      
+    </li>
+  
+  <li class=" " data-id="synthax/Sthx/SyntaxError" data-name="sthx::syntaxerror">
+      <a href="Sthx/SyntaxError.html">SyntaxError</a>
+      
+    </li>
+  
+  <li class=" " data-id="synthax/Sthx/Tree" data-name="sthx::tree">
+      <a href="Sthx/Tree.html">Tree</a>
+      
+    </li>
+  
+</ul>
+
+      
+    </li>
+  
+  <li class=" " data-id="synthax/String" data-name="string">
+      <a href="String.html">String</a>
+      
+    </li>
+  
+  <li class=" " data-id="synthax/Synthax" data-name="synthax">
+      <a href="Synthax.html">Synthax</a>
+      
+    </li>
+  
+</ul>
+
+  </div>
+</div>
+
+
+<div class="main-content">
+<h1><a id="synthax" class="anchor" href="#synthax">  <svg class="octicon-link" aria-hidden="true">
+    <use href="#octicon-link"/>
+  </svg>
+</a>synthax</h1>
+<p>Synthax is a simple parser synthesizer for Crystal.</p>
+<pre><code class="language-crystal"><span class="c"># JSON grammar</span>
+
+ws <span class="o">=</span> some(<span class="s">&#39; &#39;</span> <span class="o">|</span> <span class="s">&#39;\r&#39;</span> <span class="o">|</span> <span class="s">&#39;\n&#39;</span> <span class="o">|</span> <span class="s">&#39;\t&#39;</span>)
+digit <span class="o">=</span> <span class="s">&#39;0&#39;</span>..<span class="s">&#39;9&#39;</span>
+digits <span class="o">=</span> many(digit)
+integer <span class="o">=</span> maybe(<span class="s">&#39;-&#39;</span>) <span class="o">&amp;</span> (<span class="s">&#39;0&#39;</span> <span class="o">|</span> (<span class="s">&#39;1&#39;</span>..<span class="s">&#39;9&#39;</span>) <span class="o">&amp;</span> some(digit))
+fraction <span class="o">=</span> <span class="s">&#39;.&#39;</span> <span class="o">&amp;</span> digits
+exponent <span class="o">=</span> (<span class="s">&#39;E&#39;</span> <span class="o">|</span> <span class="s">&#39;e&#39;</span>) <span class="o">&amp;</span> (<span class="s">&#39;+&#39;</span> <span class="o">|</span> <span class="s">&#39;-&#39;</span>) <span class="o">&amp;</span> digits
+number <span class="o">=</span> keep(integer <span class="o">&amp;</span> maybe(fraction) <span class="o">&amp;</span> maybe(exponent), <span class="s">&quot;number:value&quot;</span>)
+hex <span class="o">=</span> digit <span class="o">|</span> (<span class="s">&#39;A&#39;</span>..<span class="s">&#39;F&#39;</span>) <span class="o">|</span> (<span class="s">&#39;a&#39;</span>..<span class="s">&#39;f&#39;</span>)
+escape <span class="o">=</span> <span class="s">&#39;&quot;&#39;</span> <span class="o">|</span> <span class="s">&#39;\\&#39;</span> <span class="o">|</span> <span class="s">&#39;/&#39;</span> <span class="o">|</span> <span class="s">&#39;b&#39;</span> <span class="o">|</span> <span class="s">&#39;f&#39;</span> <span class="o">|</span> <span class="s">&#39;n&#39;</span> <span class="o">|</span> <span class="s">&#39;r&#39;</span> <span class="o">|</span> <span class="s">&#39;t&#39;</span> <span class="o">|</span> (<span class="s">&#39;u&#39;</span> <span class="o">&amp;</span> hex <span class="o">&amp;</span> hex <span class="o">&amp;</span> hex <span class="o">&amp;</span> hex)
+character <span class="o">=</span> ((<span class="n">0x0020</span>..<span class="n">0x10FFFF</span>) <span class="o">-</span> <span class="s">&#39;&quot;&#39;</span> <span class="o">-</span> <span class="s">&#39;\\&#39;</span>) <span class="o">|</span> (<span class="s">&#39;\\&#39;</span> <span class="o">&amp;</span> escape)
+string <span class="o">=</span> <span class="s">&#39;&quot;&#39;</span> <span class="o">&amp;</span> keep(some(character), <span class="s">&quot;string:value&quot;</span>) <span class="o">&amp;</span> <span class="s">&#39;&quot;&#39;</span>
+value <span class="o">=</span> ahead
+element <span class="o">=</span> ws <span class="o">&amp;</span> value <span class="o">&amp;</span> ws
+elements <span class="o">=</span> sep(element, by: <span class="s">&#39;,&#39;</span>)
+array <span class="o">=</span> <span class="s">&#39;[&#39;</span> <span class="o">&amp;</span> (elements <span class="o">|</span> ws) <span class="o">&amp;</span> <span class="s">&#39;]&#39;</span>
+member <span class="o">=</span> capture(ws <span class="o">&amp;</span> string <span class="o">&amp;</span> <span class="s">&#39;:&#39;</span> <span class="o">&amp;</span> element, <span class="s">&quot;pair&quot;</span>)
+members <span class="o">=</span> sep(member, by: <span class="s">&#39;,&#39;</span>)
+object <span class="o">=</span> <span class="s">&#39;{&#39;</span> <span class="o">&amp;</span> (members <span class="o">|</span> ws) <span class="o">&amp;</span> <span class="s">&#39;}&#39;</span>
+value.put \
+  capture(object) <span class="o">|</span>
+  capture(array) <span class="o">|</span>
+  capture(string) <span class="o">|</span>
+  capture(number) <span class="o">|</span>
+  lit(<span class="s">&quot;true&quot;</span>) <span class="o">|</span>
+  lit(<span class="s">&quot;false&quot;</span>) <span class="o">|</span>
+  lit(<span class="s">&quot;null&quot;</span>)
+
+json <span class="o">=</span> element</code></pre>
+<h2><a id="installation" class="anchor" href="#installation">
+  <svg class="octicon-link" aria-hidden="true">
+    <use href="#octicon-link"/>
+  </svg>
+</a>Installation</h2>
+<ol>
+<li>
+<p>Add the dependency to your <code>shard.yml</code>:</p>
+<pre><code class="language-yaml">dependencies:
+  synthax:
+    github: homonoidian/synthax</code></pre>
+</li>
+<li>
+<p>Run <code>shards install</code></p>
+</li>
+</ol>
+<h2><a id="usage" class="anchor" href="#usage">
+  <svg class="octicon-link" aria-hidden="true">
+    <use href="#octicon-link"/>
+  </svg>
+</a>Usage</h2>
+<ul>
+<li>
+<p>Basic:</p>
+<pre><code class="language-crystal"><span class="k">require</span> <span class="s">&quot;synthax&quot;</span>
+
+<span class="k">include</span> <span class="t">Sthx</span><span class="t">::</span><span class="t">DSL</span>
+
+<span class="c"># Write rules here...</span>
+
+top <span class="o">=</span> your_toplevel_rule
+
+<span class="s">&quot;my string&quot;</span>.apply(top)  <span class="c"># =&gt; Sthx::Ctx | Sthx::Err</span>
+<span class="s">&quot;my string&quot;</span>.apply?(top) <span class="c"># =&gt; Sthx::Tree?</span>
+<span class="s">&quot;my string&quot;</span>.apply!(top) <span class="c"># =&gt; Sthx::Tree</span></code></pre>
+</li>
+<li>
+<p>A bit more sophisticated:</p>
+<pre><code class="language-crystal"><span class="k">require</span> <span class="s">&quot;synthax&quot;</span>
+
+<span class="k">module</span> <span class="t">Foo</span>
+  <span class="k">include</span> <span class="t">Sthx</span><span class="t">::</span><span class="t">DSL</span>
+
+  <span class="t">GRAMMAR</span> <span class="o">=</span> grammar
+
+  <span class="k">def</span> <span class="m">self</span>.grammar
+    <span class="c"># Write rules here...</span>
+
+    your_toplevel_rule
+  <span class="k">end</span>
+<span class="k">end</span>
+
+<span class="s">&quot;my string&quot;</span>.apply(<span class="t">Foo</span><span class="t">::</span><span class="t">GRAMMAR</span>)  <span class="c"># =&gt; Sthx::Ctx | Sthx::Err</span>
+<span class="s">&quot;my string&quot;</span>.apply?(<span class="t">Foo</span><span class="t">::</span><span class="t">GRAMMAR</span>) <span class="c"># =&gt; Sthx::Tree?</span>
+<span class="s">&quot;my string&quot;</span>.apply!(<span class="t">Foo</span><span class="t">::</span><span class="t">GRAMMAR</span>) <span class="c"># =&gt; Sthx::Tree</span></code></pre>
+</li>
+<li>
+<p>Rules and <code>Tree</code> are persistent and immutable. Linked list + path copying
+is used where appropriate, for storing children and mappings <code>Pf::Map</code> is
+used (hence the dependency on <code>permafrost</code>).</p>
+</li>
+<li>
+<p>For all else <a href="https://homonoidian.github.io/synthax/">see the docs</a></p>
+</li>
+</ul>
+<h2><a id="capture-and-keep" class="anchor" href="#capture-and-keep">
+  <svg class="octicon-link" aria-hidden="true">
+    <use href="#octicon-link"/>
+  </svg>
+</a><code>capture</code> and <code>keep</code></h2>
+<p>A <code>Tree</code> has <em>children</em> (<code>0</code> to some <code>N</code> of them) and <em>mappings</em> (a string to string hash).</p>
+<p><code>capture(other, id)</code> lets you reroot the tree produced by <em>other</em> to a new <code>Tree</code>
+node with the given <em>id</em>.</p>
+<p><code>keep(other, id)</code> takes <em>the string</em> matched by <em>other</em> and creates the mapping
+of <em>id</em> to that string in the <code>capture</code> above. The tree produced by <em>other</em> is
+thrown away.</p>
+<h2><a id="performance" class="anchor" href="#performance">
+  <svg class="octicon-link" aria-hidden="true">
+    <use href="#octicon-link"/>
+  </svg>
+</a>Performance</h2>
+<p>It's pretty horrible but okay for that phase where you don't have thousands upon
+thousands of lines of code / frequent reparsing thereof. Fast parsing is the least
+of concerns when you're prototyping a language/etc.</p>
+<p>If you need to go through millions of characters routinely this is the worst shard
+to pick I guess. I think recursive descent &amp; a state-machine-ish lexer is better
+for that purpose.</p>
+<ul>
+<li>
+<p>No lexer means each character must be processed by rules on the heap. This also
+means that backtracking to explore another branch is much more expensive, requiring
+to repeatedly revisit parts of the string within a different context. The grammar
+driving the parsing instead of the string makes it a much more painful process,
+but this is the last place where I should write about that so let's move on.</p>
+</li>
+<li>
+<p>There is nothing fancy or theoretical done here.</p>
+</li>
+</ul>
+<p>For 10mb JSON example (including <code>anify</code>):</p>
+<pre><code class="language-text">        JSON.parse  11.38  ( 87.90ms) (± 4.67%)  33.9MB/op        fastest
+Synthax JSON parse 974.49m (  1.03s ) (±15.50%)   418MB/op  11.67× slower</code></pre>
+<p>To test it yourself run <code>crystal run examples/json.cr -Dbenchmark --release</code></p>
+<ul>
+<li>
+<p>Memory usage is horrible due to <code><a href="Sthx/Tree.html">Sthx::Tree</a></code> overhead and children array
+overhead when converting to <code>JSON::Any</code>, plus <code>JSON::Any</code> itself of course.</p>
+</li>
+<li>
+<p>Parsing itself does not consume any memory because it's just recursively
+exploring a graph (if we don't count the call stack of course!) But you
+can't opt out of <code><a href="Sthx/Tree.html">Sthx::Tree</a></code> generation so haha live with it :)</p>
+</li>
+</ul>
+<h2><a id="development" class="anchor" href="#development">
+  <svg class="octicon-link" aria-hidden="true">
+    <use href="#octicon-link"/>
+  </svg>
+</a>Development</h2>
+<p><span class="flag orange">TODO</span>  Write development instructions here</p>
+<h2><a id="contributing" class="anchor" href="#contributing">
+  <svg class="octicon-link" aria-hidden="true">
+    <use href="#octicon-link"/>
+  </svg>
+</a>Contributing</h2>
+<ol>
+<li>Fork it (<a href="https://github.com/homonoidian/synthax/fork">https://github.com/homonoidian/synthax/fork</a>)</li>
+<li>Create your feature branch (<code>git checkout -b my-new-feature</code>)</li>
+<li>Commit your changes (<code>git commit -am 'Add some feature'</code>)</li>
+<li>Push to the branch (<code>git push origin my-new-feature</code>)</li>
+<li>Create a new Pull Request</li>
+</ol>
+<h2><a id="contributors" class="anchor" href="#contributors">
+  <svg class="octicon-link" aria-hidden="true">
+    <use href="#octicon-link"/>
+  </svg>
+</a>Contributors</h2>
+<ul>
+<li><a href="https://github.com/homonoidian">Alexey Yurchenko</a> - creator and maintainer</li>
+</ul>
+</div>
+</body>
+</html>

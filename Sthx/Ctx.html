@@ -1,0 +1,657 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Crystal Docs 1.9.2">
+<meta name="crystal_docs.project_version" content="trunk">
+<meta name="crystal_docs.project_name" content="synthax">
+
+
+
+<link href="../css/style.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="../js/doc.js"></script>
+
+  <meta name="repository-name" content="synthax">
+  <title>Sthx::Ctx - synthax trunk</title>
+  <script type="text/javascript">
+    CrystalDocs.base_path = "../";
+  </script>
+</head>
+<body>
+
+<svg class="hidden">
+  <symbol id="octicon-link" viewBox="0 0 16 16">
+    <path fill="currentColor" fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path>
+  </symbol>
+</svg>
+<input type="checkbox" id="sidebar-btn">
+<label for="sidebar-btn" id="sidebar-btn-label">
+  <svg class="open" xmlns="http://www.w3.org/2000/svg" height="2em" width="2em" viewBox="0 0 512 512"><title>Open Sidebar</title><path fill="currentColor" d="M80 96v64h352V96H80zm0 112v64h352v-64H80zm0 112v64h352v-64H80z"></path></svg>
+  <svg class="close" xmlns="http://www.w3.org/2000/svg" width="2em" height="2em" viewBox="0 0 512 512"><title>Close Sidebar</title><path fill="currentColor" d="m118.6 73.4-45.2 45.2L210.7 256 73.4 393.4l45.2 45.2L256 301.3l137.4 137.3 45.2-45.2L301.3 256l137.3-137.4-45.2-45.2L256 210.7Z"></path></svg>
+</label>
+<div class="sidebar">
+  <div class="sidebar-header">
+    <div class="search-box">
+      <input type="search" class="search-input" placeholder="Search..." spellcheck="false" aria-label="Search">
+    </div>
+
+    <div class="project-summary">
+      <h1 class="project-name">
+        <a href="../index.html">
+          synthax
+        </a>
+      </h1>
+
+      <span class="project-version">
+        trunk
+      </span>
+    </div>
+  </div>
+
+  <div class="search-results hidden">
+    <ul class="search-list"></ul>
+  </div>
+
+  <div class="types-list">
+    <ul>
+  
+  <li class=" " data-id="synthax/Char" data-name="char">
+      <a href="../Char.html">Char</a>
+      
+    </li>
+  
+  <li class=" " data-id="synthax/Range" data-name="range(b, e)">
+      <a href="../Range.html">Range</a>
+      
+    </li>
+  
+  <li class="parent open current" data-id="synthax/Sthx" data-name="sthx">
+      <a href="../Sthx.html">Sthx</a>
+      
+        <ul>
+  
+  <li class="parent " data-id="synthax/Sthx/Core" data-name="sthx::core">
+      <a href="../Sthx/Core.html">Core</a>
+      
+        <ul>
+  
+  <li class=" " data-id="synthax/Sthx/Core/LinkedList" data-name="sthx::core::linkedlist(t)">
+      <a href="../Sthx/Core/LinkedList.html">LinkedList</a>
+      
+    </li>
+  
+</ul>
+
+      
+    </li>
+  
+  <li class=" current" data-id="synthax/Sthx/Ctx" data-name="sthx::ctx">
+      <a href="../Sthx/Ctx.html">Ctx</a>
+      
+    </li>
+  
+  <li class=" " data-id="synthax/Sthx/DSL" data-name="sthx::dsl">
+      <a href="../Sthx/DSL.html">DSL</a>
+      
+    </li>
+  
+  <li class=" " data-id="synthax/Sthx/Err" data-name="sthx::err">
+      <a href="../Sthx/Err.html">Err</a>
+      
+    </li>
+  
+  <li class="parent " data-id="synthax/Sthx/Rule" data-name="sthx::rule">
+      <a href="../Sthx/Rule.html">Rule</a>
+      
+        <ul>
+  
+  <li class=" " data-id="synthax/Sthx/Rule/Ahead" data-name="sthx::rule::ahead">
+      <a href="../Sthx/Rule/Ahead.html">Ahead</a>
+      
+    </li>
+  
+  <li class=" " data-id="synthax/Sthx/Rule/Branch" data-name="sthx::rule::branch">
+      <a href="../Sthx/Rule/Branch.html">Branch</a>
+      
+    </li>
+  
+  <li class=" " data-id="synthax/Sthx/Rule/Capture" data-name="sthx::rule::capture">
+      <a href="../Sthx/Rule/Capture.html">Capture</a>
+      
+    </li>
+  
+  <li class=" " data-id="synthax/Sthx/Rule/Chain" data-name="sthx::rule::chain">
+      <a href="../Sthx/Rule/Chain.html">Chain</a>
+      
+    </li>
+  
+  <li class=" " data-id="synthax/Sthx/Rule/Empty" data-name="sthx::rule::empty">
+      <a href="../Sthx/Rule/Empty.html">Empty</a>
+      
+    </li>
+  
+  <li class=" " data-id="synthax/Sthx/Rule/FromRange" data-name="sthx::rule::fromrange">
+      <a href="../Sthx/Rule/FromRange.html">FromRange</a>
+      
+    </li>
+  
+  <li class=" " data-id="synthax/Sthx/Rule/List" data-name="sthx::rule::list">
+      <a href="../Sthx/Rule/List.html">List</a>
+      
+    </li>
+  
+  <li class=" " data-id="synthax/Sthx/Rule/Mapping" data-name="sthx::rule::mapping">
+      <a href="../Sthx/Rule/Mapping.html">Mapping</a>
+      
+    </li>
+  
+  <li class=" " data-id="synthax/Sthx/Rule/One" data-name="sthx::rule::one">
+      <a href="../Sthx/Rule/One.html">One</a>
+      
+    </li>
+  
+  <li class=" " data-id="synthax/Sthx/Rule/Refuse" data-name="sthx::rule::refuse">
+      <a href="../Sthx/Rule/Refuse.html">Refuse</a>
+      
+    </li>
+  
+  <li class=" " data-id="synthax/Sthx/Rule/Repeat" data-name="sthx::rule::repeat">
+      <a href="../Sthx/Rule/Repeat.html">Repeat</a>
+      
+    </li>
+  
+</ul>
+
+      
+    </li>
+  
+  <li class=" " data-id="synthax/Sthx/SyntaxError" data-name="sthx::syntaxerror">
+      <a href="../Sthx/SyntaxError.html">SyntaxError</a>
+      
+    </li>
+  
+  <li class=" " data-id="synthax/Sthx/Tree" data-name="sthx::tree">
+      <a href="../Sthx/Tree.html">Tree</a>
+      
+    </li>
+  
+</ul>
+
+      
+    </li>
+  
+  <li class=" " data-id="synthax/String" data-name="string">
+      <a href="../String.html">String</a>
+      
+    </li>
+  
+  <li class=" " data-id="synthax/Synthax" data-name="synthax">
+      <a href="../Synthax.html">Synthax</a>
+      
+    </li>
+  
+</ul>
+
+  </div>
+</div>
+
+
+<div class="main-content">
+<h1 class="type-name">
+
+  <span class="kind">struct</span> Sthx::<wbr>Ctx
+
+</h1>
+
+
+  <ul class="superclass-hierarchy"><li class="superclass"><a href="../Sthx/Ctx.html">Sthx::Ctx</a></li><li class="superclass">Struct</li><li class="superclass">Value</li><li class="superclass">Object</li></ul>
+
+
+
+
+  <h2>
+    <a id="overview" class="anchor" href="#overview">
+  <svg class="octicon-link" aria-hidden="true">
+    <use href="#octicon-link"/>
+  </svg>
+</a>
+    Overview
+  </h2>
+
+  <p>Represents the parsing context.</p>
+<ul>
+<li><em>reader</em> is the <code>Char::Reader</code> used for reading.</li>
+<li><em>root</em> is the current root of the parse tree (see <code><a href="../Sthx/Tree.html">Tree</a></code>).</li>
+</ul>
+<p>Note that <code><a href="../Sthx/Ctx.html">Ctx</a></code> is a <em>mutable struct</em> if <em>reader</em> is interacted with,
+so try to be careful with that.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <h2>
+    <a id="defined-in" class="anchor" href="#defined-in">
+  <svg class="octicon-link" aria-hidden="true">
+    <use href="#octicon-link"/>
+  </svg>
+</a>
+    Defined in:
+  </h2>
+  
+    
+      <a href="https://github.com/homonoidian/synthax/blob/e73ace10a93e589ea13a7670d2b200e15e8b3fd1/src/synthax/ctx.cr#L9" target="_blank">
+        synthax/ctx.cr
+      </a>
+    
+    <br/>
+  
+
+
+
+
+
+  <h2>
+    <a id="constructors" class="anchor" href="#constructors">
+  <svg class="octicon-link" aria-hidden="true">
+    <use href="#octicon-link"/>
+  </svg>
+</a>
+    Constructors
+  </h2>
+  <ul class="list-summary">
+    
+      <li class="entry-summary">
+        <a href="#new%28reader%3AChar%3A%3AReader%2Croot%3ATree%29-class-method" class="signature"><strong>.new</strong>(reader : Char::Reader, root : Tree)</a>
+        
+      </li>
+    
+  </ul>
+
+
+
+
+
+  <h2>
+    <a id="instance-method-summary" class="anchor" href="#instance-method-summary">
+  <svg class="octicon-link" aria-hidden="true">
+    <use href="#octicon-link"/>
+  </svg>
+</a>
+    Instance Method Summary
+  </h2>
+  <ul class="list-summary">
+    
+      <li class="entry-summary">
+        <a href="#adopt%28other%3ACtx%29-instance-method" class="signature"><strong>#adopt</strong>(other : Ctx)</a>
+        
+          <div class="summary"><p>Returns a copy of this context which has <em>other</em> adopted.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#advance%3Aself-instance-method" class="signature"><strong>#advance</strong> : <span class="k">self</span></a>
+        
+          <div class="summary"><p>Advances this reader one character forward.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#at_end%3F%3ABool-instance-method" class="signature"><strong>#at_end?</strong> : Bool</a>
+        
+          <div class="summary"><p>Returns whether this context's reader is at the end of its string.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#char%3AChar-instance-method" class="signature"><strong>#char</strong> : Char</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#clone-instance-method" class="signature"><strong>#clone</strong></a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#copy_with%28reader_reader%3D%40reader%2Croot_root%3D%40root%29-instance-method" class="signature"><strong>#copy_with</strong>(reader _reader = @reader, root _root = @root)</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#progress%3AInt32-instance-method" class="signature"><strong>#progress</strong> : Int32</a>
+        
+          <div class="summary"><p>Returns this context's progress (position) within the source string.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#reader%3AChar%3A%3AReader-instance-method" class="signature"><strong>#reader</strong> : Char::Reader</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#reroot%28id%3AString%29%3Aself-instance-method" class="signature"><strong>#reroot</strong>(id : String) : <span class="k">self</span></a>
+        
+          <div class="summary"><p>Returns a copy of this context where the root is set to be a tree with the given <em>id</em>.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#root%3ATree-instance-method" class="signature"><strong>#root</strong> : Tree</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#terminate%3Aself-instance-method" class="signature"><strong>#terminate</strong> : <span class="k">self</span></a>
+        
+          <div class="summary"><p>Returns a &quot;reading-terminated&quot; copy of this context where the root tree spans up to the current position of the reader.</p></div>
+        
+      </li>
+    
+  </ul>
+
+
+
+
+
+<div class="methods-inherited">
+  
+    
+
+
+    
+
+
+    
+
+
+  
+    
+
+
+    
+
+
+    
+
+
+  
+    
+
+
+    
+
+
+    
+
+
+  
+</div>
+
+
+  <h2>
+    <a id="constructor-detail" class="anchor" href="#constructor-detail">
+  <svg class="octicon-link" aria-hidden="true">
+    <use href="#octicon-link"/>
+  </svg>
+</a>
+    Constructor Detail
+  </h2>
+  
+    <div class="entry-detail" id="new(reader:Char::Reader,root:Tree)-class-method">
+      <div class="signature">
+        
+        def self.<strong>new</strong>(reader : Char::Reader, root : <a href="../Sthx/Tree.html">Tree</a>)
+
+        <a class="method-permalink" href="#new%28reader%3AChar%3A%3AReader%2Croot%3ATree%29-class-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/homonoidian/synthax/blob/e73ace10a93e589ea13a7670d2b200e15e8b3fd1/src/synthax/ctx.cr#L9" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+
+
+
+
+
+  <h2>
+    <a id="instance-method-detail" class="anchor" href="#instance-method-detail">
+  <svg class="octicon-link" aria-hidden="true">
+    <use href="#octicon-link"/>
+  </svg>
+</a>
+    Instance Method Detail
+  </h2>
+  
+    <div class="entry-detail" id="adopt(other:Ctx)-instance-method">
+      <div class="signature">
+        
+        def <strong>adopt</strong>(other : <a href="../Sthx/Ctx.html">Ctx</a>)
+
+        <a class="method-permalink" href="#adopt%28other%3ACtx%29-instance-method">#</a>
+      </div>
+      
+        <div class="doc">
+          
+          <p>Returns a copy of this context which has <em>other</em> adopted. <em>Adoption</em>
+means tree adoption (<em>other</em>'s root is made the subtree of <code>self</code>'s)
+and the picking of the reader which has the most progress out of
+<code>self</code>'s and <em>other</em>'s.</p>
+        </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/homonoidian/synthax/blob/e73ace10a93e589ea13a7670d2b200e15e8b3fd1/src/synthax/ctx.cr#L48" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="advance:self-instance-method">
+      <div class="signature">
+        
+        def <strong>advance</strong> : <span class="k">self</span>
+
+        <a class="method-permalink" href="#advance%3Aself-instance-method">#</a>
+      </div>
+      
+        <div class="doc">
+          
+          <p>Advances this reader one character forward.</p>
+        </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/homonoidian/synthax/blob/e73ace10a93e589ea13a7670d2b200e15e8b3fd1/src/synthax/ctx.cr#L21" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="at_end?:Bool-instance-method">
+      <div class="signature">
+        
+        def <strong>at_end?</strong> : Bool
+
+        <a class="method-permalink" href="#at_end%3F%3ABool-instance-method">#</a>
+      </div>
+      
+        <div class="doc">
+          
+          <p>Returns whether this context's reader is at the end of its string.</p>
+        </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/homonoidian/synthax/blob/e73ace10a93e589ea13a7670d2b200e15e8b3fd1/src/synthax/ctx.cr#L28" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="char:Char-instance-method">
+      <div class="signature">
+        
+        def <strong>char</strong> : <a href="../Char.html">Char</a>
+
+        <a class="method-permalink" href="#char%3AChar-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/homonoidian/synthax/blob/e73ace10a93e589ea13a7670d2b200e15e8b3fd1/src/synthax/ctx.cr#L11" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="clone-instance-method">
+      <div class="signature">
+        
+        def <strong>clone</strong>
+
+        <a class="method-permalink" href="#clone-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/homonoidian/synthax/blob/e73ace10a93e589ea13a7670d2b200e15e8b3fd1/src/synthax/ctx.cr#L9" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="copy_with(reader_reader=@reader,root_root=@root)-instance-method">
+      <div class="signature">
+        
+        def <strong>copy_with</strong>(reader _reader = @reader, root _root = @root)
+
+        <a class="method-permalink" href="#copy_with%28reader_reader%3D%40reader%2Croot_root%3D%40root%29-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/homonoidian/synthax/blob/e73ace10a93e589ea13a7670d2b200e15e8b3fd1/src/synthax/ctx.cr#L9" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="progress:Int32-instance-method">
+      <div class="signature">
+        
+        def <strong>progress</strong> : Int32
+
+        <a class="method-permalink" href="#progress%3AInt32-instance-method">#</a>
+      </div>
+      
+        <div class="doc">
+          
+          <p>Returns this context's progress (position) within the source string.</p>
+        </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/homonoidian/synthax/blob/e73ace10a93e589ea13a7670d2b200e15e8b3fd1/src/synthax/ctx.cr#L16" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="reader:Char::Reader-instance-method">
+      <div class="signature">
+        
+        def <strong>reader</strong> : Char::Reader
+
+        <a class="method-permalink" href="#reader%3AChar%3A%3AReader-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="reroot(id:String):self-instance-method">
+      <div class="signature">
+        
+        def <strong>reroot</strong>(id : <a href="../String.html">String</a>) : <span class="k">self</span>
+
+        <a class="method-permalink" href="#reroot%28id%3AString%29%3Aself-instance-method">#</a>
+      </div>
+      
+        <div class="doc">
+          
+          <p>Returns a copy of this context where the root is set to be a
+tree with the given <em>id</em>.</p>
+        </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/homonoidian/synthax/blob/e73ace10a93e589ea13a7670d2b200e15e8b3fd1/src/synthax/ctx.cr#L34" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="root:Tree-instance-method">
+      <div class="signature">
+        
+        def <strong>root</strong> : <a href="../Sthx/Tree.html">Tree</a>
+
+        <a class="method-permalink" href="#root%3ATree-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="terminate:self-instance-method">
+      <div class="signature">
+        
+        def <strong>terminate</strong> : <span class="k">self</span>
+
+        <a class="method-permalink" href="#terminate%3Aself-instance-method">#</a>
+      </div>
+      
+        <div class="doc">
+          
+          <p>Returns a &quot;reading-terminated&quot; copy of this context where the root
+tree spans up to the current position of the reader.</p>
+        </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/homonoidian/synthax/blob/e73ace10a93e589ea13a7670d2b200e15e8b3fd1/src/synthax/ctx.cr#L40" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+
+
+
+
+</div>
+
+</body>
+</html>

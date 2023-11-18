@@ -1,0 +1,720 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Crystal Docs 1.9.2">
+<meta name="crystal_docs.project_version" content="trunk">
+<meta name="crystal_docs.project_name" content="synthax">
+
+
+
+<link href="../css/style.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="../js/doc.js"></script>
+
+  <meta name="repository-name" content="synthax">
+  <title>Sthx::Tree - synthax trunk</title>
+  <script type="text/javascript">
+    CrystalDocs.base_path = "../";
+  </script>
+</head>
+<body>
+
+<svg class="hidden">
+  <symbol id="octicon-link" viewBox="0 0 16 16">
+    <path fill="currentColor" fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path>
+  </symbol>
+</svg>
+<input type="checkbox" id="sidebar-btn">
+<label for="sidebar-btn" id="sidebar-btn-label">
+  <svg class="open" xmlns="http://www.w3.org/2000/svg" height="2em" width="2em" viewBox="0 0 512 512"><title>Open Sidebar</title><path fill="currentColor" d="M80 96v64h352V96H80zm0 112v64h352v-64H80zm0 112v64h352v-64H80z"></path></svg>
+  <svg class="close" xmlns="http://www.w3.org/2000/svg" width="2em" height="2em" viewBox="0 0 512 512"><title>Close Sidebar</title><path fill="currentColor" d="m118.6 73.4-45.2 45.2L210.7 256 73.4 393.4l45.2 45.2L256 301.3l137.4 137.3 45.2-45.2L301.3 256l137.3-137.4-45.2-45.2L256 210.7Z"></path></svg>
+</label>
+<div class="sidebar">
+  <div class="sidebar-header">
+    <div class="search-box">
+      <input type="search" class="search-input" placeholder="Search..." spellcheck="false" aria-label="Search">
+    </div>
+
+    <div class="project-summary">
+      <h1 class="project-name">
+        <a href="../index.html">
+          synthax
+        </a>
+      </h1>
+
+      <span class="project-version">
+        trunk
+      </span>
+    </div>
+  </div>
+
+  <div class="search-results hidden">
+    <ul class="search-list"></ul>
+  </div>
+
+  <div class="types-list">
+    <ul>
+  
+  <li class=" " data-id="synthax/Char" data-name="char">
+      <a href="../Char.html">Char</a>
+      
+    </li>
+  
+  <li class=" " data-id="synthax/Range" data-name="range(b, e)">
+      <a href="../Range.html">Range</a>
+      
+    </li>
+  
+  <li class="parent open current" data-id="synthax/Sthx" data-name="sthx">
+      <a href="../Sthx.html">Sthx</a>
+      
+        <ul>
+  
+  <li class="parent " data-id="synthax/Sthx/Core" data-name="sthx::core">
+      <a href="../Sthx/Core.html">Core</a>
+      
+        <ul>
+  
+  <li class=" " data-id="synthax/Sthx/Core/LinkedList" data-name="sthx::core::linkedlist(t)">
+      <a href="../Sthx/Core/LinkedList.html">LinkedList</a>
+      
+    </li>
+  
+</ul>
+
+      
+    </li>
+  
+  <li class=" " data-id="synthax/Sthx/Ctx" data-name="sthx::ctx">
+      <a href="../Sthx/Ctx.html">Ctx</a>
+      
+    </li>
+  
+  <li class=" " data-id="synthax/Sthx/DSL" data-name="sthx::dsl">
+      <a href="../Sthx/DSL.html">DSL</a>
+      
+    </li>
+  
+  <li class=" " data-id="synthax/Sthx/Err" data-name="sthx::err">
+      <a href="../Sthx/Err.html">Err</a>
+      
+    </li>
+  
+  <li class="parent " data-id="synthax/Sthx/Rule" data-name="sthx::rule">
+      <a href="../Sthx/Rule.html">Rule</a>
+      
+        <ul>
+  
+  <li class=" " data-id="synthax/Sthx/Rule/Ahead" data-name="sthx::rule::ahead">
+      <a href="../Sthx/Rule/Ahead.html">Ahead</a>
+      
+    </li>
+  
+  <li class=" " data-id="synthax/Sthx/Rule/Branch" data-name="sthx::rule::branch">
+      <a href="../Sthx/Rule/Branch.html">Branch</a>
+      
+    </li>
+  
+  <li class=" " data-id="synthax/Sthx/Rule/Capture" data-name="sthx::rule::capture">
+      <a href="../Sthx/Rule/Capture.html">Capture</a>
+      
+    </li>
+  
+  <li class=" " data-id="synthax/Sthx/Rule/Chain" data-name="sthx::rule::chain">
+      <a href="../Sthx/Rule/Chain.html">Chain</a>
+      
+    </li>
+  
+  <li class=" " data-id="synthax/Sthx/Rule/Empty" data-name="sthx::rule::empty">
+      <a href="../Sthx/Rule/Empty.html">Empty</a>
+      
+    </li>
+  
+  <li class=" " data-id="synthax/Sthx/Rule/FromRange" data-name="sthx::rule::fromrange">
+      <a href="../Sthx/Rule/FromRange.html">FromRange</a>
+      
+    </li>
+  
+  <li class=" " data-id="synthax/Sthx/Rule/List" data-name="sthx::rule::list">
+      <a href="../Sthx/Rule/List.html">List</a>
+      
+    </li>
+  
+  <li class=" " data-id="synthax/Sthx/Rule/Mapping" data-name="sthx::rule::mapping">
+      <a href="../Sthx/Rule/Mapping.html">Mapping</a>
+      
+    </li>
+  
+  <li class=" " data-id="synthax/Sthx/Rule/One" data-name="sthx::rule::one">
+      <a href="../Sthx/Rule/One.html">One</a>
+      
+    </li>
+  
+  <li class=" " data-id="synthax/Sthx/Rule/Refuse" data-name="sthx::rule::refuse">
+      <a href="../Sthx/Rule/Refuse.html">Refuse</a>
+      
+    </li>
+  
+  <li class=" " data-id="synthax/Sthx/Rule/Repeat" data-name="sthx::rule::repeat">
+      <a href="../Sthx/Rule/Repeat.html">Repeat</a>
+      
+    </li>
+  
+</ul>
+
+      
+    </li>
+  
+  <li class=" " data-id="synthax/Sthx/SyntaxError" data-name="sthx::syntaxerror">
+      <a href="../Sthx/SyntaxError.html">SyntaxError</a>
+      
+    </li>
+  
+  <li class=" current" data-id="synthax/Sthx/Tree" data-name="sthx::tree">
+      <a href="../Sthx/Tree.html">Tree</a>
+      
+    </li>
+  
+</ul>
+
+      
+    </li>
+  
+  <li class=" " data-id="synthax/String" data-name="string">
+      <a href="../String.html">String</a>
+      
+    </li>
+  
+  <li class=" " data-id="synthax/Synthax" data-name="synthax">
+      <a href="../Synthax.html">Synthax</a>
+      
+    </li>
+  
+</ul>
+
+  </div>
+</div>
+
+
+<div class="main-content">
+<h1 class="type-name">
+
+  <span class="kind">class</span> Sthx::<wbr>Tree
+
+</h1>
+
+
+  <ul class="superclass-hierarchy"><li class="superclass"><a href="../Sthx/Tree.html">Sthx::Tree</a></li><li class="superclass">Reference</li><li class="superclass">Object</li></ul>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <h2>
+    <a id="defined-in" class="anchor" href="#defined-in">
+  <svg class="octicon-link" aria-hidden="true">
+    <use href="#octicon-link"/>
+  </svg>
+</a>
+    Defined in:
+  </h2>
+  
+    
+      <a href="https://github.com/homonoidian/synthax/blob/e73ace10a93e589ea13a7670d2b200e15e8b3fd1/src/synthax/tree.cr#L2" target="_blank">
+        synthax/tree.cr
+      </a>
+    
+    <br/>
+  
+
+
+
+
+
+  <h2>
+    <a id="constructors" class="anchor" href="#constructors">
+  <svg class="octicon-link" aria-hidden="true">
+    <use href="#octicon-link"/>
+  </svg>
+</a>
+    Constructors
+  </h2>
+  <ul class="list-summary">
+    
+      <li class="entry-summary">
+        <a href="#new%28id%3AString%2Cbegin__arg0%3AInt32%2Cspan%3AInt32%3D0%2Cchildren%3APf%3A%3AMap%28Int32%2CSthx%3A%3ATree%29%3DPf%3A%3AMap%28Int32%2CTree%29.new%2Cmappings%3APf%3A%3AMap%28String%2CString%29%3DPf%3A%3AMap%28String%2CString%29.new%29-class-method" class="signature"><strong>.new</strong>(id : String, begin __arg0 : Int32, span : Int32 = <span class="n">0</span>, children : Pf::Map(Int32, Sthx::Tree) = <span class="t">Pf</span><span class="t">::</span><span class="t">Map</span>(<span class="t">Int32</span>, <span class="t">Tree</span>).new, mappings : Pf::Map(String, String) = <span class="t">Pf</span><span class="t">::</span><span class="t">Map</span>(<span class="t">String</span>, <span class="t">String</span>).new)</a>
+        
+      </li>
+    
+  </ul>
+
+
+
+
+
+  <h2>
+    <a id="instance-method-summary" class="anchor" href="#instance-method-summary">
+  <svg class="octicon-link" aria-hidden="true">
+    <use href="#octicon-link"/>
+  </svg>
+</a>
+    Instance Method Summary
+  </h2>
+  <ul class="list-summary">
+    
+      <li class="entry-summary">
+        <a href="#%5B%5D%28mapping%3AString%29%3AString-instance-method" class="signature"><strong>#[]</strong>(mapping : String) : String</a>
+        
+          <div class="summary"><p>Returns the value of the given <em>mapping</em> on this tree.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#%5B%5D%28index%3AInt%29%3ATree-instance-method" class="signature"><strong>#[]</strong>(index : Int) : Tree</a>
+        
+          <div class="summary"><p>Returns <em>index</em>-th child of this tree.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#begin%3AInt32-instance-method" class="signature"><strong>#begin</strong> : Int32</a>
+        
+          <div class="summary"><p>Returns the index of the first character of this tree in the source string.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#end%3AInt32-instance-method" class="signature"><strong>#end</strong> : Int32</a>
+        
+          <div class="summary"><p>Returns the index of the last character of this tree in the source string.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#id%3AString-instance-method" class="signature"><strong>#id</strong> : String</a>
+        
+          <div class="summary"><p>Returns the capture id of this tree (see <code><a href="../Sthx/Rule.html#capture%28other%2Cid%3AString%29-class-method">Rule.capture</a></code>).</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#inspect%28io%2Cindent%3D0%29-instance-method" class="signature"><strong>#inspect</strong>(io, indent = <span class="n">0</span>)</a>
+        
+          <div class="summary"><p>Appends a string view of this tree to <em>io</em>.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#map%28cls%3AT.class%29%3ATforallT-instance-method" class="signature"><strong>#map</strong>(cls : <span class="t">T</span>.<span class="k">class</span>) : T forall T</a>
+        
+          <div class="summary"><p>Converts <code>self</code> into subclass instances of the given class <em>cls</em>.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#map%28cls%3AT.class%2C%26fn%3ATree%2CArray%28T%29-%3ET%29%3ATforallT-instance-method" class="signature"><strong>#map</strong>(cls : <span class="t">T</span>.<span class="k">class</span>, &fn : Tree, Array(T) -> T) : T forall T</a>
+        
+          <div class="summary"><p>Converts <code>self</code> into instance(s)/subcloass instances of the given class <em>cls</em>.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#to_s%28io%29-instance-method" class="signature"><strong>#to_s</strong>(io)</a>
+        
+          <div class="summary"><p>Same as <code><a href="../Sthx/Tree.html#inspect%28io%2Cindent%3D0%29-instance-method">#inspect</a></code>.</p></div>
+        
+      </li>
+    
+  </ul>
+
+
+
+
+
+<div class="methods-inherited">
+  
+    
+
+
+    
+
+
+    
+
+
+  
+    
+
+
+    
+
+
+    
+
+
+  
+</div>
+
+
+  <h2>
+    <a id="constructor-detail" class="anchor" href="#constructor-detail">
+  <svg class="octicon-link" aria-hidden="true">
+    <use href="#octicon-link"/>
+  </svg>
+</a>
+    Constructor Detail
+  </h2>
+  
+    <div class="entry-detail" id="new(id:String,begin__arg0:Int32,span:Int32=0,children:Pf::Map(Int32,Sthx::Tree)=Pf::Map(Int32,Tree).new,mappings:Pf::Map(String,String)=Pf::Map(String,String).new)-class-method">
+      <div class="signature">
+        
+        def self.<strong>new</strong>(id : <a href="../String.html">String</a>, begin __arg0 : Int32, span : Int32 = <span class="n">0</span>, children : Pf::Map(Int32, <a href="../Sthx/Tree.html">Sthx::Tree</a>) = <span class="t">Pf</span><span class="t">::</span><span class="t">Map</span>(<span class="t">Int32</span>, <span class="t">Tree</span>).new, mappings : Pf::Map(<a href="../String.html">String</a>, <a href="../String.html">String</a>) = <span class="t">Pf</span><span class="t">::</span><span class="t">Map</span>(<span class="t">String</span>, <span class="t">String</span>).new)
+
+        <a class="method-permalink" href="#new%28id%3AString%2Cbegin__arg0%3AInt32%2Cspan%3AInt32%3D0%2Cchildren%3APf%3A%3AMap%28Int32%2CSthx%3A%3ATree%29%3DPf%3A%3AMap%28Int32%2CTree%29.new%2Cmappings%3APf%3A%3AMap%28String%2CString%29%3DPf%3A%3AMap%28String%2CString%29.new%29-class-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/homonoidian/synthax/blob/e73ace10a93e589ea13a7670d2b200e15e8b3fd1/src/synthax/tree.cr#L10" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+
+
+
+
+
+  <h2>
+    <a id="instance-method-detail" class="anchor" href="#instance-method-detail">
+  <svg class="octicon-link" aria-hidden="true">
+    <use href="#octicon-link"/>
+  </svg>
+</a>
+    Instance Method Detail
+  </h2>
+  
+    <div class="entry-detail" id="[](mapping:String):String-instance-method">
+      <div class="signature">
+        
+        def <strong>[]</strong>(mapping : <a href="../String.html">String</a>) : <a href="../String.html">String</a>
+
+        <a class="method-permalink" href="#%5B%5D%28mapping%3AString%29%3AString-instance-method">#</a>
+      </div>
+      
+        <div class="doc">
+          
+          <p>Returns the value of the given <em>mapping</em> on this tree. See <code><a href="../Sthx/Rule.html#keep%28other%2Cid%3AString%29-class-method">Rule.keep</a></code>.
+For examples see <code><a href="../Sthx/Tree.html#map%28cls%3AT.class%29%3ATforallT-instance-method">#map</a></code> and <code>map?</code>.</p>
+        </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/homonoidian/synthax/blob/e73ace10a93e589ea13a7670d2b200e15e8b3fd1/src/synthax/tree.cr#L29" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="[](index:Int):Tree-instance-method">
+      <div class="signature">
+        
+        def <strong>[]</strong>(index : Int) : <a href="../Sthx/Tree.html">Tree</a>
+
+        <a class="method-permalink" href="#%5B%5D%28index%3AInt%29%3ATree-instance-method">#</a>
+      </div>
+      
+        <div class="doc">
+          
+          <p>Returns <em>index</em>-th child of this tree.</p>
+        </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/homonoidian/synthax/blob/e73ace10a93e589ea13a7670d2b200e15e8b3fd1/src/synthax/tree.cr#L34" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="begin:Int32-instance-method">
+      <div class="signature">
+        
+        def <strong>begin</strong> : Int32
+
+        <a class="method-permalink" href="#begin%3AInt32-instance-method">#</a>
+      </div>
+      
+        <div class="doc">
+          
+          <p>Returns the index of the first character of this tree in the
+source string.</p>
+        </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/homonoidian/synthax/blob/e73ace10a93e589ea13a7670d2b200e15e8b3fd1/src/synthax/tree.cr#L8" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="end:Int32-instance-method">
+      <div class="signature">
+        
+        def <strong>end</strong> : Int32
+
+        <a class="method-permalink" href="#end%3AInt32-instance-method">#</a>
+      </div>
+      
+        <div class="doc">
+          
+          <p>Returns the index of the last character of this tree in the
+source string.</p>
+        </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/homonoidian/synthax/blob/e73ace10a93e589ea13a7670d2b200e15e8b3fd1/src/synthax/tree.cr#L23" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="id:String-instance-method">
+      <div class="signature">
+        
+        def <strong>id</strong> : <a href="../String.html">String</a>
+
+        <a class="method-permalink" href="#id%3AString-instance-method">#</a>
+      </div>
+      
+        <div class="doc">
+          
+          <p>Returns the capture id of this tree (see <code><a href="../Sthx/Rule.html#capture%28other%2Cid%3AString%29-class-method">Rule.capture</a></code>).</p>
+        </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/homonoidian/synthax/blob/e73ace10a93e589ea13a7670d2b200e15e8b3fd1/src/synthax/tree.cr#L4" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="inspect(io,indent=0)-instance-method">
+      <div class="signature">
+        
+        def <strong>inspect</strong>(io, indent = <span class="n">0</span>)
+
+        <a class="method-permalink" href="#inspect%28io%2Cindent%3D0%29-instance-method">#</a>
+      </div>
+      
+        <div class="doc">
+          
+          <p>Appends a string view of this tree to <em>io</em>.</p>
+        </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/homonoidian/synthax/blob/e73ace10a93e589ea13a7670d2b200e15e8b3fd1/src/synthax/tree.cr#L192" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="map(cls:T.class):TforallT-instance-method">
+      <div class="signature">
+        
+        def <strong>map</strong>(cls : <span class="t">T</span>.<span class="k">class</span>) : T forall T
+
+        <a class="method-permalink" href="#map%28cls%3AT.class%29%3ATforallT-instance-method">#</a>
+      </div>
+      
+        <div class="doc">
+          
+          <p>Converts <code>self</code> into subclass instances of the given class <em>cls</em>.</p>
+<ul>
+<li>All nonabstract subclasses of <em>cls</em> are studied</li>
+<li>Their names are converted to snake case: e.g. <code>BinOp</code> becomes <code>bin_op</code></li>
+<li><code><a href="../Sthx/Tree.html">Tree</a></code>s whose <code><a href="../Sthx/Tree.html#id%3AString-instance-method">#id</a></code> matches the snake case name of some subclass <em>s</em> are passed
+to <em>s</em>'s <code><a href="../Sthx/Tree.html#new%28id%3AString%2Cbegin__arg0%3AInt32%2Cspan%3AInt32%3D0%2Cchildren%3APf%3A%3AMap%28Int32%2CSthx%3A%3ATree%29%3DPf%3A%3AMap%28Int32%2CTree%29.new%2Cmappings%3APf%3A%3AMap%28String%2CString%29%3DPf%3A%3AMap%28String%2CString%29.new%29-class-method">.new</a></code> method like so: <code>s.new(tree : <a href="../Sthx/Tree.html">Tree</a>, children : Array(cls))</code>.</li>
+</ul>
+<p>Returns nil if no nodes were created or if no node was created for
+the root of the tree.</p>
+<p>Please note that there is always an implicit <em>root</em> node. You must handle
+it as well. See <code><a href="../String.html#apply%3F%28%2Aargs%2C%2A%2Akwargs%29%3ASthx%3A%3ATree%7CNil-instance-method">String#apply?</a></code>.</p>
+<pre><code class="language-crystal"><span class="k">abstract</span> <span class="k">class</span> <span class="t">ASTree</span>
+  <span class="k">class</span> <span class="t">Num</span> <span class="o">&lt;</span> <span class="k">self</span>
+    <span class="k">def</span> <span class="m">initialize</span>(@value : <span class="t">Float64</span>)
+    <span class="k">end</span>
+
+    <span class="k">def</span> <span class="m">self</span>.new(tree : <span class="t">Tree</span>, children : <span class="t">Array</span>(<span class="t">ASTree</span>))
+      new(tree.string.to_f64)
+    <span class="k">end</span>
+
+    <span class="k">def</span> <span class="m">result</span>
+      @value
+    <span class="k">end</span>
+  <span class="k">end</span>
+
+  <span class="k">class</span> <span class="t">BinOp</span> <span class="o">&lt;</span> <span class="k">self</span>
+    <span class="k">def</span> <span class="m">initialize</span>(@operator : <span class="t">String</span>, @a : <span class="t">ASTree</span>, @b : <span class="t">ASTree</span>)
+    <span class="k">end</span>
+
+    <span class="k">def</span> <span class="m">self</span>.new(tree : <span class="t">Tree</span>, children : <span class="t">Array</span>(<span class="t">ASTree</span>))
+      new(tree[<span class="s">&quot;op&quot;</span>], children[<span class="n">0</span>], children[<span class="n">1</span>])
+    <span class="k">end</span>
+
+    <span class="k">def</span> <span class="m">result</span>
+      <span class="k">case</span> @operator
+      <span class="k">when</span> <span class="s">&quot;+&quot;</span> <span class="k">then</span> @a.result <span class="o">+</span> @b.result
+      <span class="k">when</span> <span class="s">&quot;-&quot;</span> <span class="k">then</span> @a.result <span class="o">-</span> @b.result
+      <span class="k">when</span> <span class="s">&quot;*&quot;</span> <span class="k">then</span> @a.result <span class="o">*</span> @b.result
+      <span class="k">when</span> <span class="s">&quot;/&quot;</span> <span class="k">then</span> @a.result <span class="o">/</span> @b.result
+      <span class="k">else</span>
+        <span class="n">0.0</span>
+      <span class="k">end</span>
+    <span class="k">end</span>
+  <span class="k">end</span>
+
+  <span class="k">class</span> <span class="t">Root</span> <span class="o">&lt;</span> <span class="k">self</span>
+    <span class="k">def</span> <span class="m">initialize</span>(@exps : <span class="t">Array</span>(<span class="t">ASTree</span>))
+    <span class="k">end</span>
+
+    <span class="k">def</span> <span class="m">self</span>.new(tree : <span class="t">Tree</span>, children : <span class="t">Array</span>(<span class="t">ASTree</span>))
+      new(children)
+    <span class="k">end</span>
+
+    <span class="k">def</span> <span class="m">result</span>
+      (exp <span class="o">=</span> @exps.last?) ? exp.result : <span class="n">0.0</span>
+    <span class="k">end</span>
+  <span class="k">end</span>
+<span class="k">end</span>
+
+<span class="k">include</span> <span class="t">DSL</span>
+
+mul <span class="o">=</span> ahead
+add <span class="o">=</span> ahead
+
+ws <span class="o">=</span> (<span class="s">&#39; &#39;</span> <span class="o">|</span> <span class="s">&#39;\r&#39;</span> <span class="o">|</span> <span class="s">&#39;\n&#39;</span> <span class="o">|</span> <span class="s">&#39;\t&#39;</span>)<span class="o">*</span>(..)
+num <span class="o">=</span> (<span class="s">&#39;0&#39;</span>..<span class="s">&#39;9&#39;</span>)<span class="o">*</span>(<span class="n">1</span>..)
+value <span class="o">=</span> capture(num) <span class="o">|</span> <span class="s">&#39;(&#39;</span> <span class="o">&amp;</span> ws <span class="o">&amp;</span> add <span class="o">&amp;</span> ws <span class="o">&amp;</span> <span class="s">&#39;)&#39;</span>
+
+mul.put capture(value <span class="o">&amp;</span> ws <span class="o">&amp;</span> keep(<span class="s">&#39;*&#39;</span> <span class="o">|</span> <span class="s">&#39;/&#39;</span>, <span class="s">&quot;op&quot;</span>) <span class="o">&amp;</span> ws <span class="o">&amp;</span> mul, <span class="s">&quot;bin_op&quot;</span>) <span class="o">|</span> value
+add.put capture(mul <span class="o">&amp;</span> ws <span class="o">&amp;</span> keep(<span class="s">&#39;+&#39;</span> <span class="o">|</span> <span class="s">&#39;-&#39;</span>, <span class="s">&quot;op&quot;</span>) <span class="o">&amp;</span> ws <span class="o">&amp;</span> add, <span class="s">&quot;bin_op&quot;</span>) <span class="o">|</span> mul
+
+e1 <span class="o">=</span> <span class="s">&quot;2 + 3 * 4&quot;</span>
+e2 <span class="o">=</span> <span class="s">&quot;(2 + 3) * 4&quot;</span>
+
+results <span class="o">=</span> {e1, e2}.map <span class="o">&amp;</span>.apply?(add).try <span class="o">&amp;</span>.map?(<span class="t">ASTree</span>).try <span class="o">&amp;</span>.result
+results <span class="c"># =&gt; {14.0, 20.0}</span></code></pre>
+        </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/homonoidian/synthax/blob/e73ace10a93e589ea13a7670d2b200e15e8b3fd1/src/synthax/tree.cr#L133" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="map(cls:T.class,&amp;fn:Tree,Array(T)-&gt;T):TforallT-instance-method">
+      <div class="signature">
+        
+        def <strong>map</strong>(cls : <span class="t">T</span>.<span class="k">class</span>, &fn : <a href="../Sthx/Tree.html">Tree</a>, Array(T) -> T) : T forall T
+
+        <a class="method-permalink" href="#map%28cls%3AT.class%2C%26fn%3ATree%2CArray%28T%29-%3ET%29%3ATforallT-instance-method">#</a>
+      </div>
+      
+        <div class="doc">
+          
+          <p>Converts <code>self</code> into instance(s)/subcloass instances of the given
+class <em>cls</em>.</p>
+<p>Calls <em>fn</em> with <code>self</code> and the array of <code>self</code>'s children already
+converted into instances of <em>cls</em> using <em>fn</em> recursively.</p>
+<p>Most of the times you'd want to consider the other overload <code>map?(cls : T.class)</code>
+instead, though.</p>
+<p>Please note that there is always an implicit <em>root</em> tree. You must handle
+it as well. See <code><a href="../String.html#apply%3F%28%2Aargs%2C%2A%2Akwargs%29%3ASthx%3A%3ATree%7CNil-instance-method">String#apply?</a></code>.</p>
+<pre><code class="language-crystal"><span class="k">include</span> <span class="t">DSL</span>
+
+number <span class="o">=</span> capture((<span class="s">&#39;0&#39;</span>..<span class="s">&#39;9&#39;</span>)<span class="o">*</span>(<span class="n">1</span>..), <span class="s">&quot;number&quot;</span>)
+
+factor <span class="o">=</span> ahead
+factor.put(capture(number <span class="o">&amp;</span> keep(<span class="s">&#39;*&#39;</span> <span class="o">|</span> <span class="s">&#39;/&#39;</span>, <span class="s">&quot;kind&quot;</span>) <span class="o">&amp;</span> factor, <span class="s">&quot;op&quot;</span>) <span class="o">|</span> number)
+
+add <span class="o">=</span> ahead
+add.put(capture(factor <span class="o">&amp;</span> keep(<span class="s">&#39;+&#39;</span> <span class="o">|</span> <span class="s">&#39;-&#39;</span>, <span class="s">&quot;kind&quot;</span>) <span class="o">&amp;</span> add, <span class="s">&quot;op&quot;</span>) <span class="o">|</span> factor)
+
+<span class="k">if</span> tree <span class="o">=</span> <span class="s">&quot;100+200*300&quot;</span>.apply?(add)
+  result <span class="o">=</span> tree.map(<span class="t">Float64</span>) <span class="k">do</span> <span class="o">|</span>tree, children<span class="o">|</span>
+    <span class="k">case</span> tree.id
+    <span class="k">when</span> <span class="s">&quot;root&quot;</span>   <span class="k">then</span> <span class="k">next</span> children[<span class="n">0</span>]
+    <span class="k">when</span> <span class="s">&quot;number&quot;</span> <span class="k">then</span> <span class="k">next</span> tree.string.to_f64
+    <span class="k">when</span> <span class="s">&quot;op&quot;</span>
+      <span class="k">case</span> tree[<span class="s">&quot;kind&quot;</span>]
+      <span class="k">when</span> <span class="s">&quot;+&quot;</span> <span class="k">then</span> <span class="k">next</span> children[<span class="n">0</span>] <span class="o">+</span> children[<span class="n">2</span>]
+      <span class="k">when</span> <span class="s">&quot;-&quot;</span> <span class="k">then</span> <span class="k">next</span> children[<span class="n">0</span>] <span class="o">-</span> children[<span class="n">2</span>]
+      <span class="k">when</span> <span class="s">&quot;*&quot;</span> <span class="k">then</span> <span class="k">next</span> children[<span class="n">0</span>] <span class="o">*</span> children[<span class="n">2</span>]
+      <span class="k">when</span> <span class="s">&quot;/&quot;</span> <span class="k">then</span> <span class="k">next</span> children[<span class="n">0</span>] <span class="o">/</span> children[<span class="n">2</span>]
+      <span class="k">end</span>
+    <span class="k">end</span>
+    <span class="n">0.0</span>
+  <span class="k">end</span>
+  result <span class="c"># =&gt; 60100.0</span>
+<span class="k">end</span></code></pre>
+        </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/homonoidian/synthax/blob/e73ace10a93e589ea13a7670d2b200e15e8b3fd1/src/synthax/tree.cr#L187" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="to_s(io)-instance-method">
+      <div class="signature">
+        
+        def <strong>to_s</strong>(io)
+
+        <a class="method-permalink" href="#to_s%28io%29-instance-method">#</a>
+      </div>
+      
+        <div class="doc">
+          
+          <p>Same as <code><a href="../Sthx/Tree.html#inspect%28io%2Cindent%3D0%29-instance-method">#inspect</a></code>.</p>
+        </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/homonoidian/synthax/blob/e73ace10a93e589ea13a7670d2b200e15e8b3fd1/src/synthax/tree.cr#L210" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+
+
+
+
+</div>
+
+</body>
+</html>

@@ -1,0 +1,753 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Crystal Docs 1.9.2">
+<meta name="crystal_docs.project_version" content="trunk">
+<meta name="crystal_docs.project_name" content="synthax">
+
+
+
+<link href="../css/style.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="../js/doc.js"></script>
+
+  <meta name="repository-name" content="synthax">
+  <title>Sthx::Rule - synthax trunk</title>
+  <script type="text/javascript">
+    CrystalDocs.base_path = "../";
+  </script>
+</head>
+<body>
+
+<svg class="hidden">
+  <symbol id="octicon-link" viewBox="0 0 16 16">
+    <path fill="currentColor" fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path>
+  </symbol>
+</svg>
+<input type="checkbox" id="sidebar-btn">
+<label for="sidebar-btn" id="sidebar-btn-label">
+  <svg class="open" xmlns="http://www.w3.org/2000/svg" height="2em" width="2em" viewBox="0 0 512 512"><title>Open Sidebar</title><path fill="currentColor" d="M80 96v64h352V96H80zm0 112v64h352v-64H80zm0 112v64h352v-64H80z"></path></svg>
+  <svg class="close" xmlns="http://www.w3.org/2000/svg" width="2em" height="2em" viewBox="0 0 512 512"><title>Close Sidebar</title><path fill="currentColor" d="m118.6 73.4-45.2 45.2L210.7 256 73.4 393.4l45.2 45.2L256 301.3l137.4 137.3 45.2-45.2L301.3 256l137.3-137.4-45.2-45.2L256 210.7Z"></path></svg>
+</label>
+<div class="sidebar">
+  <div class="sidebar-header">
+    <div class="search-box">
+      <input type="search" class="search-input" placeholder="Search..." spellcheck="false" aria-label="Search">
+    </div>
+
+    <div class="project-summary">
+      <h1 class="project-name">
+        <a href="../index.html">
+          synthax
+        </a>
+      </h1>
+
+      <span class="project-version">
+        trunk
+      </span>
+    </div>
+  </div>
+
+  <div class="search-results hidden">
+    <ul class="search-list"></ul>
+  </div>
+
+  <div class="types-list">
+    <ul>
+  
+  <li class=" " data-id="synthax/Char" data-name="char">
+      <a href="../Char.html">Char</a>
+      
+    </li>
+  
+  <li class=" " data-id="synthax/Range" data-name="range(b, e)">
+      <a href="../Range.html">Range</a>
+      
+    </li>
+  
+  <li class="parent open current" data-id="synthax/Sthx" data-name="sthx">
+      <a href="../Sthx.html">Sthx</a>
+      
+        <ul>
+  
+  <li class="parent " data-id="synthax/Sthx/Core" data-name="sthx::core">
+      <a href="../Sthx/Core.html">Core</a>
+      
+        <ul>
+  
+  <li class=" " data-id="synthax/Sthx/Core/LinkedList" data-name="sthx::core::linkedlist(t)">
+      <a href="../Sthx/Core/LinkedList.html">LinkedList</a>
+      
+    </li>
+  
+</ul>
+
+      
+    </li>
+  
+  <li class=" " data-id="synthax/Sthx/Ctx" data-name="sthx::ctx">
+      <a href="../Sthx/Ctx.html">Ctx</a>
+      
+    </li>
+  
+  <li class=" " data-id="synthax/Sthx/DSL" data-name="sthx::dsl">
+      <a href="../Sthx/DSL.html">DSL</a>
+      
+    </li>
+  
+  <li class=" " data-id="synthax/Sthx/Err" data-name="sthx::err">
+      <a href="../Sthx/Err.html">Err</a>
+      
+    </li>
+  
+  <li class="parent open current" data-id="synthax/Sthx/Rule" data-name="sthx::rule">
+      <a href="../Sthx/Rule.html">Rule</a>
+      
+        <ul>
+  
+  <li class=" " data-id="synthax/Sthx/Rule/Ahead" data-name="sthx::rule::ahead">
+      <a href="../Sthx/Rule/Ahead.html">Ahead</a>
+      
+    </li>
+  
+  <li class=" " data-id="synthax/Sthx/Rule/Branch" data-name="sthx::rule::branch">
+      <a href="../Sthx/Rule/Branch.html">Branch</a>
+      
+    </li>
+  
+  <li class=" " data-id="synthax/Sthx/Rule/Capture" data-name="sthx::rule::capture">
+      <a href="../Sthx/Rule/Capture.html">Capture</a>
+      
+    </li>
+  
+  <li class=" " data-id="synthax/Sthx/Rule/Chain" data-name="sthx::rule::chain">
+      <a href="../Sthx/Rule/Chain.html">Chain</a>
+      
+    </li>
+  
+  <li class=" " data-id="synthax/Sthx/Rule/Empty" data-name="sthx::rule::empty">
+      <a href="../Sthx/Rule/Empty.html">Empty</a>
+      
+    </li>
+  
+  <li class=" " data-id="synthax/Sthx/Rule/FromRange" data-name="sthx::rule::fromrange">
+      <a href="../Sthx/Rule/FromRange.html">FromRange</a>
+      
+    </li>
+  
+  <li class=" " data-id="synthax/Sthx/Rule/List" data-name="sthx::rule::list">
+      <a href="../Sthx/Rule/List.html">List</a>
+      
+    </li>
+  
+  <li class=" " data-id="synthax/Sthx/Rule/Mapping" data-name="sthx::rule::mapping">
+      <a href="../Sthx/Rule/Mapping.html">Mapping</a>
+      
+    </li>
+  
+  <li class=" " data-id="synthax/Sthx/Rule/One" data-name="sthx::rule::one">
+      <a href="../Sthx/Rule/One.html">One</a>
+      
+    </li>
+  
+  <li class=" " data-id="synthax/Sthx/Rule/Refuse" data-name="sthx::rule::refuse">
+      <a href="../Sthx/Rule/Refuse.html">Refuse</a>
+      
+    </li>
+  
+  <li class=" " data-id="synthax/Sthx/Rule/Repeat" data-name="sthx::rule::repeat">
+      <a href="../Sthx/Rule/Repeat.html">Repeat</a>
+      
+    </li>
+  
+</ul>
+
+      
+    </li>
+  
+  <li class=" " data-id="synthax/Sthx/SyntaxError" data-name="sthx::syntaxerror">
+      <a href="../Sthx/SyntaxError.html">SyntaxError</a>
+      
+    </li>
+  
+  <li class=" " data-id="synthax/Sthx/Tree" data-name="sthx::tree">
+      <a href="../Sthx/Tree.html">Tree</a>
+      
+    </li>
+  
+</ul>
+
+      
+    </li>
+  
+  <li class=" " data-id="synthax/String" data-name="string">
+      <a href="../String.html">String</a>
+      
+    </li>
+  
+  <li class=" " data-id="synthax/Synthax" data-name="synthax">
+      <a href="../Synthax.html">Synthax</a>
+      
+    </li>
+  
+</ul>
+
+  </div>
+</div>
+
+
+<div class="main-content">
+<h1 class="type-name">
+
+  <span class="kind">module</span> Sthx::<wbr>Rule
+
+</h1>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <h2>
+    <a id="direct-including-types" class="anchor" href="#direct-including-types">
+  <svg class="octicon-link" aria-hidden="true">
+    <use href="#octicon-link"/>
+  </svg>
+</a>
+    Direct including types
+  </h2>
+  <ul class="other-types-list">
+    
+      <li class="other-type"><a href="../Sthx/Rule/Ahead.html">Sthx::Rule::Ahead</a></li>
+    
+      <li class="other-type"><a href="../Sthx/Rule/Capture.html">Sthx::Rule::Capture</a></li>
+    
+      <li class="other-type"><a href="../Sthx/Rule/Empty.html">Sthx::Rule::Empty</a></li>
+    
+      <li class="other-type"><a href="../Sthx/Rule/FromRange.html">Sthx::Rule::FromRange</a></li>
+    
+      <li class="other-type"><a href="../Sthx/Rule/List.html">Sthx::Rule::List</a></li>
+    
+      <li class="other-type"><a href="../Sthx/Rule/Mapping.html">Sthx::Rule::Mapping</a></li>
+    
+      <li class="other-type"><a href="../Sthx/Rule/One.html">Sthx::Rule::One</a></li>
+    
+      <li class="other-type"><a href="../Sthx/Rule/Refuse.html">Sthx::Rule::Refuse</a></li>
+    
+      <li class="other-type"><a href="../Sthx/Rule/Repeat.html">Sthx::Rule::Repeat</a></li>
+    
+  </ul>
+
+
+
+
+  <h2>
+    <a id="defined-in" class="anchor" href="#defined-in">
+  <svg class="octicon-link" aria-hidden="true">
+    <use href="#octicon-link"/>
+  </svg>
+</a>
+    Defined in:
+  </h2>
+  
+    
+      <a href="https://github.com/homonoidian/synthax/blob/e73ace10a93e589ea13a7670d2b200e15e8b3fd1/src/synthax/rule.cr#L2" target="_blank">
+        synthax/rule.cr
+      </a>
+    
+    <br/>
+  
+
+
+
+
+
+
+
+  <h2>
+    <a id="class-method-summary" class="anchor" href="#class-method-summary">
+  <svg class="octicon-link" aria-hidden="true">
+    <use href="#octicon-link"/>
+  </svg>
+</a>
+    Class Method Summary
+  </h2>
+  <ul class="list-summary">
+    
+      <li class="entry-summary">
+        <a href="#ahead-class-method" class="signature"><strong>.ahead</strong></a>
+        
+          <div class="summary"><p>Forward declares a rule.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#capture%28other%2Cid%3AString%29-class-method" class="signature"><strong>.capture</strong>(other, id : String)</a>
+        
+          <div class="summary"><p>Captures <em>other</em> into a subtree with the given <em>id</em>.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#from%28object%3AChar%29-class-method" class="signature"><strong>.from</strong>(object : Char)</a>
+        
+          <div class="summary"><p>Creates a <code><a href="../Sthx/Rule.html">Rule</a></code> from the given <code><a href="../Char.html">Char</a></code> <em>object</em>.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#from%28object%3AString%29-class-method" class="signature"><strong>.from</strong>(object : String)</a>
+        
+          <div class="summary"><p>Creates a <code><a href="../Sthx/Rule.html">Rule</a></code> from the given <code><a href="../String.html">String</a></code> <em>object</em>.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#from%28object%3ARange%28Char%2CChar%29%29-class-method" class="signature"><strong>.from</strong>(object : Range(Char, Char))</a>
+        
+          <div class="summary"><p>Creates a <code><a href="../Sthx/Rule.html">Rule</a></code> from the given character range <em>object</em>.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#from%28object%3ARange%28Int%2CInt%29%29-class-method" class="signature"><strong>.from</strong>(object : Range(Int, Int))</a>
+        
+          <div class="summary"><p>Creates a <code><a href="../Sthx/Rule.html">Rule</a></code> from the given character range <em>object</em>.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#keep%28other%2Cid%3AString%29-class-method" class="signature"><strong>.keep</strong>(other, id : String)</a>
+        
+          <div class="summary"><p>Defines a tree mapping called <em>id</em> whose value is the underlying string content of <em>other</em>.</p></div>
+        
+      </li>
+    
+  </ul>
+
+
+
+  <h2>
+    <a id="instance-method-summary" class="anchor" href="#instance-method-summary">
+  <svg class="octicon-link" aria-hidden="true">
+    <use href="#octicon-link"/>
+  </svg>
+</a>
+    Instance Method Summary
+  </h2>
+  <ul class="list-summary">
+    
+      <li class="entry-summary">
+        <a href="#%26%28other%29-instance-method" class="signature"><strong>#&</strong>(other)</a>
+        
+          <div class="summary"><p>Asserts that <em>other</em> must follow <code>self</code> for a match to occur.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#%2A%28times%3ARange%29-instance-method" class="signature"><strong>#*</strong>(times : Range)</a>
+        
+          <div class="summary"><p>Repeats <code>self</code> a number of <em>times</em>.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#-%28other%29-instance-method" class="signature"><strong>#-</strong>(other)</a>
+        
+          <div class="summary"><p>Asserts that <em>other</em> must <em>not</em> match for <code>self</code> to match.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#%7C%28other%29-instance-method" class="signature"><strong>#|</strong>(other)</a>
+        
+          <div class="summary"><p>Asserts that either <code>self</code> or <em>other</em> must match for a match to occur, in that order.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#eval%28ctx%3ACtx%29%3ACtx%7CErr-instance-method" class="signature"><strong>#eval</strong>(ctx : Ctx) : Ctx | Err</a>
+        
+          <div class="summary"><p>Evaluates this rule within the given parser context <em>ctx</em>.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#eval%28ctx%3ACtx%2C%26%3ACtx-%3ECtx%7CErr%29%3ACtx%7CErr-instance-method" class="signature"><strong>#eval</strong>(ctx : Ctx, & : Ctx -> Ctx | Err) : Ctx | Err</a>
+        
+      </li>
+    
+  </ul>
+
+
+
+
+
+<div class="methods-inherited">
+  
+</div>
+
+
+
+
+  <h2>
+    <a id="class-method-detail" class="anchor" href="#class-method-detail">
+  <svg class="octicon-link" aria-hidden="true">
+    <use href="#octicon-link"/>
+  </svg>
+</a>
+    Class Method Detail
+  </h2>
+  
+    <div class="entry-detail" id="ahead-class-method">
+      <div class="signature">
+        
+        def self.<strong>ahead</strong>
+
+        <a class="method-permalink" href="#ahead-class-method">#</a>
+      </div>
+      
+        <div class="doc">
+          
+          <p>Forward declares a rule.</p>
+<pre><code class="language-crystal">expr <span class="o">=</span> <span class="t">Rule</span>.ahead
+expr.put(<span class="s">&#39;(&#39;</span> <span class="o">&amp;</span> expr<span class="o">*</span>(<span class="n">0</span>..<span class="n">1</span>) <span class="o">&amp;</span> <span class="s">&#39;)&#39;</span>)</code></pre>
+        </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/homonoidian/synthax/blob/e73ace10a93e589ea13a7670d2b200e15e8b3fd1/src/synthax/rule.cr#L193" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="capture(other,id:String)-class-method">
+      <div class="signature">
+        
+        def self.<strong>capture</strong>(other, id : <a href="../String.html">String</a>)
+
+        <a class="method-permalink" href="#capture%28other%2Cid%3AString%29-class-method">#</a>
+      </div>
+      
+        <div class="doc">
+          
+          <p>Captures <em>other</em> into a subtree with the given <em>id</em>.</p>
+<pre><code class="language-crystal">foo <span class="o">=</span> <span class="t">Rule</span>.capture(<span class="s">&#39;a&#39;</span>, <span class="s">&quot;foo&quot;</span>)
+bar <span class="o">=</span> <span class="t">Rule</span>.capture(<span class="s">&#39;b&#39;</span>, <span class="s">&quot;bar&quot;</span>)
+
+<span class="s">&quot;a&quot;</span>.apply?(foo <span class="o">|</span> bar)
+<span class="c"># =&gt;</span>
+<span class="c"># &lt;root&gt; ⸢0-1⸥</span>
+<span class="c">#   foo ⸢0-1⸥</span>
+
+<span class="s">&quot;b&quot;</span>.apply?(foo <span class="o">|</span> bar)
+<span class="c"># =&gt;</span>
+<span class="c"># &lt;root&gt; ⸢0-1⸥</span>
+<span class="c">#   bar ⸢0-1⸥</span></code></pre>
+        </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/homonoidian/synthax/blob/e73ace10a93e589ea13a7670d2b200e15e8b3fd1/src/synthax/rule.cr#L260" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="from(object:Char)-class-method">
+      <div class="signature">
+        
+        def self.<strong>from</strong>(object : <a href="../Char.html">Char</a>)
+
+        <a class="method-permalink" href="#from%28object%3AChar%29-class-method">#</a>
+      </div>
+      
+        <div class="doc">
+          
+          <p>Creates a <code><a href="../Sthx/Rule.html">Rule</a></code> from the given <code><a href="../Char.html">Char</a></code> <em>object</em>.</p>
+<pre><code class="language-crystal"><span class="t">Rule</span>.from(<span class="s">&#39;a&#39;</span>) <span class="c"># =&gt; one(&#39;a&#39;)</span></code></pre>
+        </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/homonoidian/synthax/blob/e73ace10a93e589ea13a7670d2b200e15e8b3fd1/src/synthax/rule.cr#L202" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="from(object:String)-class-method">
+      <div class="signature">
+        
+        def self.<strong>from</strong>(object : <a href="../String.html">String</a>)
+
+        <a class="method-permalink" href="#from%28object%3AString%29-class-method">#</a>
+      </div>
+      
+        <div class="doc">
+          
+          <p>Creates a <code><a href="../Sthx/Rule.html">Rule</a></code> from the given <code><a href="../String.html">String</a></code> <em>object</em>.</p>
+<p>This works by joining the characters of the string in a chain
+(i.e. <code>&quot;foo&quot;</code> is the same as <code>'f' &amp; 'o' &amp; 'o'</code>).</p>
+<pre><code class="language-crystal"><span class="t">Rule</span>.from(<span class="s">&quot;foo&quot;</span>) <span class="c"># =&gt; one(&#39;f&#39;) &amp; one(&#39;o&#39;) &amp; one(&#39;o&#39;)</span></code></pre>
+        </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/homonoidian/synthax/blob/e73ace10a93e589ea13a7670d2b200e15e8b3fd1/src/synthax/rule.cr#L214" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="from(object:Range(Char,Char))-class-method">
+      <div class="signature">
+        
+        def self.<strong>from</strong>(object : <a href="../Range.html">Range</a>(<a href="../Char.html">Char</a>, <a href="../Char.html">Char</a>))
+
+        <a class="method-permalink" href="#from%28object%3ARange%28Char%2CChar%29%29-class-method">#</a>
+      </div>
+      
+        <div class="doc">
+          
+          <p>Creates a <code><a href="../Sthx/Rule.html">Rule</a></code> from the given character range <em>object</em>. Any
+character that is in the range will be allowed.</p>
+<pre><code class="language-crystal"><span class="t">Rule</span>.from(<span class="s">&#39;a&#39;</span>..<span class="s">&#39;z&#39;</span>) <span class="c"># =&gt; any(&#39;a&#39;..&#39;z&#39;)</span></code></pre>
+        </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/homonoidian/synthax/blob/e73ace10a93e589ea13a7670d2b200e15e8b3fd1/src/synthax/rule.cr#L230" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="from(object:Range(Int,Int))-class-method">
+      <div class="signature">
+        
+        def self.<strong>from</strong>(object : <a href="../Range.html">Range</a>(Int, Int))
+
+        <a class="method-permalink" href="#from%28object%3ARange%28Int%2CInt%29%29-class-method">#</a>
+      </div>
+      
+        <div class="doc">
+          
+          <p>Creates a <code><a href="../Sthx/Rule.html">Rule</a></code> from the given character range <em>object</em>. Any
+character that is in the range will be allowed.</p>
+<pre><code class="language-crystal"><span class="t">Rule</span>.from(<span class="s">&#39;a&#39;</span>..<span class="s">&#39;z&#39;</span>) <span class="c"># =&gt; any(&#39;a&#39;..&#39;z&#39;)</span></code></pre>
+        </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/homonoidian/synthax/blob/e73ace10a93e589ea13a7670d2b200e15e8b3fd1/src/synthax/rule.cr#L235" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="keep(other,id:String)-class-method">
+      <div class="signature">
+        
+        def self.<strong>keep</strong>(other, id : <a href="../String.html">String</a>)
+
+        <a class="method-permalink" href="#keep%28other%2Cid%3AString%29-class-method">#</a>
+      </div>
+      
+        <div class="doc">
+          
+          <p>Defines a tree mapping called <em>id</em> whose value is the underlying
+string content of <em>other</em>.</p>
+        </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/homonoidian/synthax/blob/e73ace10a93e589ea13a7670d2b200e15e8b3fd1/src/synthax/rule.cr#L266" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+
+
+
+  <h2>
+    <a id="instance-method-detail" class="anchor" href="#instance-method-detail">
+  <svg class="octicon-link" aria-hidden="true">
+    <use href="#octicon-link"/>
+  </svg>
+</a>
+    Instance Method Detail
+  </h2>
+  
+    <div class="entry-detail" id="&amp;(other)-instance-method">
+      <div class="signature">
+        
+        def <strong>&</strong>(other)
+
+        <a class="method-permalink" href="#%26%28other%29-instance-method">#</a>
+      </div>
+      
+        <div class="doc">
+          
+          <p>Asserts that <em>other</em> must follow <code>self</code> for a match to occur.</p>
+<pre><code class="language-crystal">xy <span class="o">=</span> <span class="t">Rule</span>.from(<span class="s">&#39;x&#39;</span>) <span class="o">&amp;</span> <span class="t">Rule</span>.from(<span class="s">&#39;y&#39;</span>)
+<span class="s">&quot;&quot;</span>.apply?(xy)   <span class="c"># =&gt; nil</span>
+<span class="s">&quot;x&quot;</span>.apply?(xy)  <span class="c"># =&gt; nil</span>
+<span class="s">&quot;xa&quot;</span>.apply?(xy) <span class="c"># =&gt; nil</span>
+<span class="s">&quot;xy&quot;</span>.apply?(xy) <span class="c"># =&gt; Tree</span>
+<span class="s">&quot;yx&quot;</span>.apply?(xy) <span class="c"># =&gt; nil</span></code></pre>
+        </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/homonoidian/synthax/blob/e73ace10a93e589ea13a7670d2b200e15e8b3fd1/src/synthax/rule.cr#L302" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="*(times:Range)-instance-method">
+      <div class="signature">
+        
+        def <strong>*</strong>(times : <a href="../Range.html">Range</a>)
+
+        <a class="method-permalink" href="#%2A%28times%3ARange%29-instance-method">#</a>
+      </div>
+      
+        <div class="doc">
+          
+          <p>Repeats <code>self</code> a number of <em>times</em>.</p>
+<ul>
+<li><code>..</code> means repeat zero or more times</li>
+<li><code>n..</code> means repeat <em>n</em> or more times</li>
+<li><code>..m</code>/<code>...m</code> means repeat zero to and including/excluding <em>m</em> times</li>
+<li><code>n..m</code>/<code>n...m</code> means repeat <em>n</em> to and including/excluding <em>m</em> times</li>
+</ul>
+<p>Due to how (weirdly?) Crystal ranges are parsed you'll almost always
+want the range in parentheses.</p>
+<pre><code class="language-crystal">xs <span class="o">=</span> <span class="t">Rule</span>.from(<span class="s">&#39;x&#39;</span>) <span class="o">*</span> (<span class="n">1</span>..)
+<span class="s">&quot;&quot;</span>.apply?(xs)    <span class="c"># =&gt; nil</span>
+<span class="s">&quot;x&quot;</span>.apply?(xs)   <span class="c"># =&gt; Tree</span>
+<span class="s">&quot;xx&quot;</span>.apply?(xs)  <span class="c"># =&gt; Tree</span>
+<span class="s">&quot;xxx&quot;</span>.apply?(xs) <span class="c"># =&gt; Tree</span>
+<span class="c"># ...</span></code></pre>
+        </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/homonoidian/synthax/blob/e73ace10a93e589ea13a7670d2b200e15e8b3fd1/src/synthax/rule.cr#L288" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="-(other)-instance-method">
+      <div class="signature">
+        
+        def <strong>-</strong>(other)
+
+        <a class="method-permalink" href="#-%28other%29-instance-method">#</a>
+      </div>
+      
+        <div class="doc">
+          
+          <p>Asserts that <em>other</em> must <em>not</em> match for <code>self</code> to match.</p>
+<pre><code class="language-crystal">foo <span class="o">=</span> <span class="t">Rule</span>.from(<span class="s">&#39;a&#39;</span>..<span class="s">&#39;z&#39;</span>) <span class="o">-</span> <span class="s">&#39;x&#39;</span>
+<span class="s">&quot;a&quot;</span>.apply?(xy) <span class="c"># =&gt; Tree</span>
+<span class="s">&quot;z&quot;</span>.apply?(xy) <span class="c"># =&gt; Tree</span>
+<span class="s">&quot;x&quot;</span>.apply?(xy) <span class="c"># =&gt; nil</span></code></pre>
+        </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/homonoidian/synthax/blob/e73ace10a93e589ea13a7670d2b200e15e8b3fd1/src/synthax/rule.cr#L328" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="|(other)-instance-method">
+      <div class="signature">
+        
+        def <strong>|</strong>(other)
+
+        <a class="method-permalink" href="#%7C%28other%29-instance-method">#</a>
+      </div>
+      
+        <div class="doc">
+          
+          <p>Asserts that either <code>self</code> or <em>other</em> must match for a match to occur,
+in that order.</p>
+<pre><code class="language-crystal">xy <span class="o">=</span> <span class="t">Rule</span>.from(<span class="s">&#39;x&#39;</span>) <span class="o">|</span> <span class="t">Rule</span>.from(<span class="s">&#39;y&#39;</span>)
+<span class="s">&quot;&quot;</span>.apply?(xy)  <span class="c"># =&gt; nil</span>
+<span class="s">&quot;x&quot;</span>.apply?(xy) <span class="c"># =&gt; Tree</span>
+<span class="s">&quot;y&quot;</span>.apply?(xy) <span class="c"># =&gt; Tree</span>
+<span class="s">&quot;z&quot;</span>.apply?(xy) <span class="c"># =&gt; nil</span></code></pre>
+        </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/homonoidian/synthax/blob/e73ace10a93e589ea13a7670d2b200e15e8b3fd1/src/synthax/rule.cr#L316" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="eval(ctx:Ctx):Ctx|Err-instance-method">
+      <div class="signature">
+        abstract 
+        def <strong>eval</strong>(ctx : <a href="../Sthx/Ctx.html">Ctx</a>) : <a href="../Sthx/Ctx.html">Ctx</a> | <a href="../Sthx/Err.html">Err</a>
+
+        <a class="method-permalink" href="#eval%28ctx%3ACtx%29%3ACtx%7CErr-instance-method">#</a>
+      </div>
+      
+        <div class="doc">
+          
+          <p>Evaluates this rule within the given parser context <em>ctx</em>.</p>
+        </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/homonoidian/synthax/blob/e73ace10a93e589ea13a7670d2b200e15e8b3fd1/src/synthax/rule.cr#L4" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="eval(ctx:Ctx,&amp;:Ctx-&gt;Ctx|Err):Ctx|Err-instance-method">
+      <div class="signature">
+        
+        def <strong>eval</strong>(ctx : <a href="../Sthx/Ctx.html">Ctx</a>, & : <a href="../Sthx/Ctx.html">Ctx</a> -> <a href="../Sthx/Ctx.html">Ctx</a> | <a href="../Sthx/Err.html">Err</a>) : <a href="../Sthx/Ctx.html">Ctx</a> | <a href="../Sthx/Err.html">Err</a>
+
+        <a class="method-permalink" href="#eval%28ctx%3ACtx%2C%26%3ACtx-%3ECtx%7CErr%29%3ACtx%7CErr-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/homonoidian/synthax/blob/e73ace10a93e589ea13a7670d2b200e15e8b3fd1/src/synthax/rule.cr#L6" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+
+
+
+
+</div>
+
+</body>
+</html>
