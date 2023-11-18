@@ -25,9 +25,15 @@ module Sthx
     end
 
     # Returns the value of the given *mapping* on this tree. See `Rule.keep`.
-    # For examples see `map` and `map?`.
+    # For examples see `map`.
     def [](mapping : String) : String
       @mappings[mapping]
+    end
+
+    # Returns the value of the given *mapping* on this tree. Returns nil if
+    # the mapping does not exist. See `Rule.keep`. For examples see `map`.
+    def []?(mapping : String) : String?
+      @mappings[mapping]?
     end
 
     # Returns *index*-th child of this tree.
@@ -124,7 +130,7 @@ module Sthx
     # e1 = "2 + 3 * 4"
     # e2 = "(2 + 3) * 4"
     #
-    # results = {e1, e2}.map &.apply?(add).try &.map?(ASTree).try &.result
+    # results = {e1, e2}.map &.apply!(add).map(ASTree).result
     # results # => {14.0, 20.0}
     # ```
     def map(cls : T.class) : T forall T
@@ -146,7 +152,7 @@ module Sthx
     # Calls *fn* with `self` and the array of `self`'s children already
     # converted into instances of *cls* using *fn* recursively.
     #
-    # Most of the times you'd want to consider the other overload `map?(cls : T.class)`
+    # Most of the times you'd want to consider the other overload `map(cls : T.class)`
     # instead, though.
     #
     # Please note that there is always an implicit *root* tree. You must handle
