@@ -10,7 +10,7 @@ require "./synthax/dsl"
 require "./synthax/ext"
 
 # Synthax is a simple parser synthesizer DSL for Crystal.
-module Synthax
+module Sthx
   VERSION = "0.1.0"
 
   # :nodoc:
