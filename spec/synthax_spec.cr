@@ -56,7 +56,7 @@ def anify(json, string)
   end
 end
 
-describe Synthax do
+describe Sthx do
   it "parses 10mb JSON in the same way as Crystal's JSON" do
     string = File.read("#{__DIR__}/data/10mb.json")
     (anify(json, string) == JSON.parse(string)).should be_true
