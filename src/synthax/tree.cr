@@ -55,10 +55,7 @@ module Sthx
     # - All nonabstract subclasses of *cls* are studied
     # - Their names are converted to snake case: e.g. `BinOp` becomes `bin_op`
     # - `Tree`s whose `id` matches the snake case name of some subclass *s* are passed
-    #   to *s*'s `new` method like so: `s.new(tree : Tree, children : Array(cls))`.
-    #
-    # Returns nil if no nodes were created or if no node was created for
-    # the root of the tree.
+    #   to *s*'s `new` method like so: `s.new(tree : Tree, children : Array(T))`.
     #
     # Please note that there is always an implicit *root* node. You must handle
     # it as well. See `String#apply?`.
