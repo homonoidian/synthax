@@ -1,5 +1,5 @@
 name: synthax
-version: 0.1.0
+version: 0.1.1
 
 authors:
   - Alexey Yurchenko <homonoidian@yandex.ru>
@@ -7,8 +7,8 @@ authors:
 dependencies:
   permafrost:
     github: homonoidian/permafrost
-    version: 0.1.0
+    version: ~> 0.1
 
-crystal: '>= 1.10.0'
+crystal: ">= 1.10.0"
 
 license: MIT
