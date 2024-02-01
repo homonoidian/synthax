@@ -4,7 +4,7 @@
   <meta charset="utf-8" />
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="generator" content="Crystal Docs 1.9.2">
+<meta name="generator" content="Crystal Docs 1.10.1">
 <meta name="crystal_docs.project_version" content="trunk">
 <meta name="crystal_docs.project_name" content="synthax">
 
@@ -112,28 +112,13 @@
       
     </li>
   
-  <li class=" " data-id="synthax/Sthx/Rule/Empty" data-name="sthx::rule::empty">
-      <a href="../Sthx/Rule/Empty.html">Empty</a>
-      
-    </li>
-  
   <li class=" " data-id="synthax/Sthx/Rule/FromRange" data-name="sthx::rule::fromrange">
       <a href="../Sthx/Rule/FromRange.html">FromRange</a>
       
     </li>
   
-  <li class=" " data-id="synthax/Sthx/Rule/List" data-name="sthx::rule::list">
-      <a href="../Sthx/Rule/List.html">List</a>
-      
-    </li>
-  
-  <li class=" " data-id="synthax/Sthx/Rule/Mapping" data-name="sthx::rule::mapping">
-      <a href="../Sthx/Rule/Mapping.html">Mapping</a>
-      
-    </li>
-  
-  <li class=" " data-id="synthax/Sthx/Rule/One" data-name="sthx::rule::one">
-      <a href="../Sthx/Rule/One.html">One</a>
+  <li class=" " data-id="synthax/Sthx/Rule/Keep" data-name="sthx::rule::keep">
+      <a href="../Sthx/Rule/Keep.html">Keep</a>
       
     </li>
   
@@ -211,17 +196,15 @@
     
       <li class="other-type"><a href="../Sthx/Rule/Ahead.html">Sthx::Rule::Ahead</a></li>
     
+      <li class="other-type"><a href="../Sthx/Rule/Branch.html">Sthx::Rule::Branch</a></li>
+    
       <li class="other-type"><a href="../Sthx/Rule/Capture.html">Sthx::Rule::Capture</a></li>
     
-      <li class="other-type"><a href="../Sthx/Rule/Empty.html">Sthx::Rule::Empty</a></li>
+      <li class="other-type"><a href="../Sthx/Rule/Chain.html">Sthx::Rule::Chain</a></li>
     
       <li class="other-type"><a href="../Sthx/Rule/FromRange.html">Sthx::Rule::FromRange</a></li>
     
-      <li class="other-type"><a href="../Sthx/Rule/List.html">Sthx::Rule::List</a></li>
-    
-      <li class="other-type"><a href="../Sthx/Rule/Mapping.html">Sthx::Rule::Mapping</a></li>
-    
-      <li class="other-type"><a href="../Sthx/Rule/One.html">Sthx::Rule::One</a></li>
+      <li class="other-type"><a href="../Sthx/Rule/Keep.html">Sthx::Rule::Keep</a></li>
     
       <li class="other-type"><a href="../Sthx/Rule/Refuse.html">Sthx::Rule::Refuse</a></li>
     
@@ -242,7 +225,7 @@
   </h2>
   
     
-      <a href="https://github.com/homonoidian/synthax/blob/68b1eedd8428238126ce1b0596a41b82cd0091d0/src/synthax/rule.cr#L2" target="_blank">
+      <a href="https://github.com/homonoidian/synthax/blob/ae3bddeafc9a7fd139e46a7fd1e109a0c7689b7a/src/synthax/rule.cr#L2" target="_blank">
         synthax/rule.cr
       </a>
     
@@ -318,6 +301,8 @@
 
 
 
+
+
   <h2>
     <a id="instance-method-summary" class="anchor" href="#instance-method-summary">
   <svg class="octicon-link" aria-hidden="true">
@@ -363,14 +348,7 @@
         
       </li>
     
-      <li class="entry-summary">
-        <a href="#eval%28ctx%3ACtx%2C%26%3ACtx-%3ECtx%7CErr%29%3ACtx%7CErr-instance-method" class="signature"><strong>#eval</strong>(ctx : Ctx, & : Ctx -> Ctx | Err) : Ctx | Err</a>
-        
-      </li>
-    
   </ul>
-
-
 
 
 
@@ -408,7 +386,7 @@ expr.put(<span class="s">&#39;(&#39;</span> <span class="o">&amp;</span> expr<sp
       <br/>
       <div>
         
-          [<a href="https://github.com/homonoidian/synthax/blob/68b1eedd8428238126ce1b0596a41b82cd0091d0/src/synthax/rule.cr#L194" target="_blank">View source</a>]
+          [<a href="https://github.com/homonoidian/synthax/blob/ae3bddeafc9a7fd139e46a7fd1e109a0c7689b7a/src/synthax/rule.cr#L171" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -441,7 +419,7 @@ bar <span class="o">=</span> <span class="t">Rule</span>.capture(<span class="s"
       <br/>
       <div>
         
-          [<a href="https://github.com/homonoidian/synthax/blob/68b1eedd8428238126ce1b0596a41b82cd0091d0/src/synthax/rule.cr#L261" target="_blank">View source</a>]
+          [<a href="https://github.com/homonoidian/synthax/blob/ae3bddeafc9a7fd139e46a7fd1e109a0c7689b7a/src/synthax/rule.cr#L236" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -463,7 +441,7 @@ bar <span class="o">=</span> <span class="t">Rule</span>.capture(<span class="s"
       <br/>
       <div>
         
-          [<a href="https://github.com/homonoidian/synthax/blob/68b1eedd8428238126ce1b0596a41b82cd0091d0/src/synthax/rule.cr#L203" target="_blank">View source</a>]
+          [<a href="https://github.com/homonoidian/synthax/blob/ae3bddeafc9a7fd139e46a7fd1e109a0c7689b7a/src/synthax/rule.cr#L180" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -487,7 +465,7 @@ bar <span class="o">=</span> <span class="t">Rule</span>.capture(<span class="s"
       <br/>
       <div>
         
-          [<a href="https://github.com/homonoidian/synthax/blob/68b1eedd8428238126ce1b0596a41b82cd0091d0/src/synthax/rule.cr#L215" target="_blank">View source</a>]
+          [<a href="https://github.com/homonoidian/synthax/blob/ae3bddeafc9a7fd139e46a7fd1e109a0c7689b7a/src/synthax/rule.cr#L192" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -510,7 +488,7 @@ character that is in the range will be allowed.</p>
       <br/>
       <div>
         
-          [<a href="https://github.com/homonoidian/synthax/blob/68b1eedd8428238126ce1b0596a41b82cd0091d0/src/synthax/rule.cr#L231" target="_blank">View source</a>]
+          [<a href="https://github.com/homonoidian/synthax/blob/ae3bddeafc9a7fd139e46a7fd1e109a0c7689b7a/src/synthax/rule.cr#L206" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -533,7 +511,7 @@ character that is in the range will be allowed.</p>
       <br/>
       <div>
         
-          [<a href="https://github.com/homonoidian/synthax/blob/68b1eedd8428238126ce1b0596a41b82cd0091d0/src/synthax/rule.cr#L236" target="_blank">View source</a>]
+          [<a href="https://github.com/homonoidian/synthax/blob/ae3bddeafc9a7fd139e46a7fd1e109a0c7689b7a/src/synthax/rule.cr#L211" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -555,11 +533,13 @@ string content of <em>other</em>.</p>
       <br/>
       <div>
         
-          [<a href="https://github.com/homonoidian/synthax/blob/68b1eedd8428238126ce1b0596a41b82cd0091d0/src/synthax/rule.cr#L267" target="_blank">View source</a>]
+          [<a href="https://github.com/homonoidian/synthax/blob/ae3bddeafc9a7fd139e46a7fd1e109a0c7689b7a/src/synthax/rule.cr#L242" target="_blank">View source</a>]
         
       </div>
     </div>
   
+
+
 
 
 
@@ -594,7 +574,7 @@ string content of <em>other</em>.</p>
       <br/>
       <div>
         
-          [<a href="https://github.com/homonoidian/synthax/blob/68b1eedd8428238126ce1b0596a41b82cd0091d0/src/synthax/rule.cr#L303" target="_blank">View source</a>]
+          [<a href="https://github.com/homonoidian/synthax/blob/ae3bddeafc9a7fd139e46a7fd1e109a0c7689b7a/src/synthax/rule.cr#L278" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -629,7 +609,7 @@ want the range in parentheses.</p>
       <br/>
       <div>
         
-          [<a href="https://github.com/homonoidian/synthax/blob/68b1eedd8428238126ce1b0596a41b82cd0091d0/src/synthax/rule.cr#L289" target="_blank">View source</a>]
+          [<a href="https://github.com/homonoidian/synthax/blob/ae3bddeafc9a7fd139e46a7fd1e109a0c7689b7a/src/synthax/rule.cr#L264" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -654,7 +634,7 @@ want the range in parentheses.</p>
       <br/>
       <div>
         
-          [<a href="https://github.com/homonoidian/synthax/blob/68b1eedd8428238126ce1b0596a41b82cd0091d0/src/synthax/rule.cr#L329" target="_blank">View source</a>]
+          [<a href="https://github.com/homonoidian/synthax/blob/ae3bddeafc9a7fd139e46a7fd1e109a0c7689b7a/src/synthax/rule.cr#L304" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -681,7 +661,7 @@ in that order.</p>
       <br/>
       <div>
         
-          [<a href="https://github.com/homonoidian/synthax/blob/68b1eedd8428238126ce1b0596a41b82cd0091d0/src/synthax/rule.cr#L317" target="_blank">View source</a>]
+          [<a href="https://github.com/homonoidian/synthax/blob/ae3bddeafc9a7fd139e46a7fd1e109a0c7689b7a/src/synthax/rule.cr#L292" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -702,29 +682,11 @@ in that order.</p>
       <br/>
       <div>
         
-          [<a href="https://github.com/homonoidian/synthax/blob/68b1eedd8428238126ce1b0596a41b82cd0091d0/src/synthax/rule.cr#L4" target="_blank">View source</a>]
+          [<a href="https://github.com/homonoidian/synthax/blob/ae3bddeafc9a7fd139e46a7fd1e109a0c7689b7a/src/synthax/rule.cr#L4" target="_blank">View source</a>]
         
       </div>
     </div>
   
-    <div class="entry-detail" id="eval(ctx:Ctx,&amp;:Ctx-&gt;Ctx|Err):Ctx|Err-instance-method">
-      <div class="signature">
-        
-        def <strong>eval</strong>(ctx : <a href="../Sthx/Ctx.html">Ctx</a>, & : <a href="../Sthx/Ctx.html">Ctx</a> -> <a href="../Sthx/Ctx.html">Ctx</a> | <a href="../Sthx/Err.html">Err</a>) : <a href="../Sthx/Ctx.html">Ctx</a> | <a href="../Sthx/Err.html">Err</a>
-
-        <a class="method-permalink" href="#eval%28ctx%3ACtx%2C%26%3ACtx-%3ECtx%7CErr%29%3ACtx%7CErr-instance-method">#</a>
-      </div>
-      
-      <br/>
-      <div>
-        
-          [<a href="https://github.com/homonoidian/synthax/blob/68b1eedd8428238126ce1b0596a41b82cd0091d0/src/synthax/rule.cr#L6" target="_blank">View source</a>]
-        
-      </div>
-    </div>
-  
-
-
 
 
 </div>

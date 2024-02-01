@@ -4,7 +4,7 @@
   <meta charset="utf-8" />
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="generator" content="Crystal Docs 1.9.2">
+<meta name="generator" content="Crystal Docs 1.10.1">
 <meta name="crystal_docs.project_version" content="trunk">
 <meta name="crystal_docs.project_name" content="synthax">
 
@@ -112,28 +112,13 @@
       
     </li>
   
-  <li class=" " data-id="synthax/Sthx/Rule/Empty" data-name="sthx::rule::empty">
-      <a href="../Sthx/Rule/Empty.html">Empty</a>
-      
-    </li>
-  
   <li class=" " data-id="synthax/Sthx/Rule/FromRange" data-name="sthx::rule::fromrange">
       <a href="../Sthx/Rule/FromRange.html">FromRange</a>
       
     </li>
   
-  <li class=" " data-id="synthax/Sthx/Rule/List" data-name="sthx::rule::list">
-      <a href="../Sthx/Rule/List.html">List</a>
-      
-    </li>
-  
-  <li class=" " data-id="synthax/Sthx/Rule/Mapping" data-name="sthx::rule::mapping">
-      <a href="../Sthx/Rule/Mapping.html">Mapping</a>
-      
-    </li>
-  
-  <li class=" " data-id="synthax/Sthx/Rule/One" data-name="sthx::rule::one">
-      <a href="../Sthx/Rule/One.html">One</a>
+  <li class=" " data-id="synthax/Sthx/Rule/Keep" data-name="sthx::rule::keep">
+      <a href="../Sthx/Rule/Keep.html">Keep</a>
       
     </li>
   
@@ -214,7 +199,7 @@
   </h2>
   
     
-      <a href="https://github.com/homonoidian/synthax/blob/68b1eedd8428238126ce1b0596a41b82cd0091d0/src/synthax/tree.cr#L2" target="_blank">
+      <a href="https://github.com/homonoidian/synthax/blob/ae3bddeafc9a7fd139e46a7fd1e109a0c7689b7a/src/synthax/tree.cr#L2" target="_blank">
         synthax/tree.cr
       </a>
     
@@ -241,6 +226,8 @@
       </li>
     
   </ul>
+
+
 
 
 
@@ -274,6 +261,13 @@
         <a href="#%5B%5D%3F%28mapping%3AString%29%3AString%7CNil-instance-method" class="signature"><strong>#[]?</strong>(mapping : String) : String | Nil</a>
         
           <div class="summary"><p>Returns the value of the given <em>mapping</em> on this tree.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#%5B%5D%3F%28index%3AInt%29%3ATree%7CNil-instance-method" class="signature"><strong>#[]?</strong>(index : Int) : Tree | Nil</a>
+        
+          <div class="summary"><p>Returns <em>index</em>-th child of this tree, or <code>nil</code> if this tree has no child at <em>index</em>.</p></div>
         
       </li>
     
@@ -330,8 +324,6 @@
 
 
 
-
-
 <div class="methods-inherited">
   
     
@@ -343,7 +335,13 @@
     
 
 
+    
+
+
   
+    
+
+
     
 
 
@@ -377,11 +375,13 @@
       <br/>
       <div>
         
-          [<a href="https://github.com/homonoidian/synthax/blob/68b1eedd8428238126ce1b0596a41b82cd0091d0/src/synthax/tree.cr#L10" target="_blank">View source</a>]
+          [<a href="https://github.com/homonoidian/synthax/blob/ae3bddeafc9a7fd139e46a7fd1e109a0c7689b7a/src/synthax/tree.cr#L10" target="_blank">View source</a>]
         
       </div>
     </div>
   
+
+
 
 
 
@@ -413,7 +413,7 @@ For examples see <code><a href="../Sthx/Tree.html#map%28cls%3AT.class%29%3ATfora
       <br/>
       <div>
         
-          [<a href="https://github.com/homonoidian/synthax/blob/68b1eedd8428238126ce1b0596a41b82cd0091d0/src/synthax/tree.cr#L29" target="_blank">View source</a>]
+          [<a href="https://github.com/homonoidian/synthax/blob/ae3bddeafc9a7fd139e46a7fd1e109a0c7689b7a/src/synthax/tree.cr#L29" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -434,7 +434,7 @@ For examples see <code><a href="../Sthx/Tree.html#map%28cls%3AT.class%29%3ATfora
       <br/>
       <div>
         
-          [<a href="https://github.com/homonoidian/synthax/blob/68b1eedd8428238126ce1b0596a41b82cd0091d0/src/synthax/tree.cr#L40" target="_blank">View source</a>]
+          [<a href="https://github.com/homonoidian/synthax/blob/ae3bddeafc9a7fd139e46a7fd1e109a0c7689b7a/src/synthax/tree.cr#L40" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -456,7 +456,29 @@ the mapping does not exist. See <code><a href="../Sthx/Rule.html#keep%28other%2C
       <br/>
       <div>
         
-          [<a href="https://github.com/homonoidian/synthax/blob/68b1eedd8428238126ce1b0596a41b82cd0091d0/src/synthax/tree.cr#L35" target="_blank">View source</a>]
+          [<a href="https://github.com/homonoidian/synthax/blob/ae3bddeafc9a7fd139e46a7fd1e109a0c7689b7a/src/synthax/tree.cr#L35" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="[]?(index:Int):Tree|Nil-instance-method">
+      <div class="signature">
+        
+        def <strong>[]?</strong>(index : Int) : <a href="../Sthx/Tree.html">Tree</a> | Nil
+
+        <a class="method-permalink" href="#%5B%5D%3F%28index%3AInt%29%3ATree%7CNil-instance-method">#</a>
+      </div>
+      
+        <div class="doc">
+          
+          <p>Returns <em>index</em>-th child of this tree, or <code>nil</code> if this tree has no
+child at <em>index</em>.</p>
+        </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/homonoidian/synthax/blob/ae3bddeafc9a7fd139e46a7fd1e109a0c7689b7a/src/synthax/tree.cr#L46" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -478,7 +500,7 @@ source string.</p>
       <br/>
       <div>
         
-          [<a href="https://github.com/homonoidian/synthax/blob/68b1eedd8428238126ce1b0596a41b82cd0091d0/src/synthax/tree.cr#L8" target="_blank">View source</a>]
+          [<a href="https://github.com/homonoidian/synthax/blob/ae3bddeafc9a7fd139e46a7fd1e109a0c7689b7a/src/synthax/tree.cr#L8" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -500,7 +522,7 @@ source string.</p>
       <br/>
       <div>
         
-          [<a href="https://github.com/homonoidian/synthax/blob/68b1eedd8428238126ce1b0596a41b82cd0091d0/src/synthax/tree.cr#L23" target="_blank">View source</a>]
+          [<a href="https://github.com/homonoidian/synthax/blob/ae3bddeafc9a7fd139e46a7fd1e109a0c7689b7a/src/synthax/tree.cr#L23" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -521,7 +543,7 @@ source string.</p>
       <br/>
       <div>
         
-          [<a href="https://github.com/homonoidian/synthax/blob/68b1eedd8428238126ce1b0596a41b82cd0091d0/src/synthax/tree.cr#L4" target="_blank">View source</a>]
+          [<a href="https://github.com/homonoidian/synthax/blob/ae3bddeafc9a7fd139e46a7fd1e109a0c7689b7a/src/synthax/tree.cr#L4" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -542,7 +564,7 @@ source string.</p>
       <br/>
       <div>
         
-          [<a href="https://github.com/homonoidian/synthax/blob/68b1eedd8428238126ce1b0596a41b82cd0091d0/src/synthax/tree.cr#L195" target="_blank">View source</a>]
+          [<a href="https://github.com/homonoidian/synthax/blob/ae3bddeafc9a7fd139e46a7fd1e109a0c7689b7a/src/synthax/tree.cr#L201" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -636,7 +658,7 @@ results <span class="c"># =&gt; {14.0, 20.0}</span></code></pre>
       <br/>
       <div>
         
-          [<a href="https://github.com/homonoidian/synthax/blob/68b1eedd8428238126ce1b0596a41b82cd0091d0/src/synthax/tree.cr#L136" target="_blank">View source</a>]
+          [<a href="https://github.com/homonoidian/synthax/blob/ae3bddeafc9a7fd139e46a7fd1e109a0c7689b7a/src/synthax/tree.cr#L142" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -691,7 +713,7 @@ add.put(capture(factor <span class="o">&amp;</span> keep(<span class="s">&#39;+&
       <br/>
       <div>
         
-          [<a href="https://github.com/homonoidian/synthax/blob/68b1eedd8428238126ce1b0596a41b82cd0091d0/src/synthax/tree.cr#L190" target="_blank">View source</a>]
+          [<a href="https://github.com/homonoidian/synthax/blob/ae3bddeafc9a7fd139e46a7fd1e109a0c7689b7a/src/synthax/tree.cr#L196" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -712,13 +734,11 @@ add.put(capture(factor <span class="o">&amp;</span> keep(<span class="s">&#39;+&
       <br/>
       <div>
         
-          [<a href="https://github.com/homonoidian/synthax/blob/68b1eedd8428238126ce1b0596a41b82cd0091d0/src/synthax/tree.cr#L213" target="_blank">View source</a>]
+          [<a href="https://github.com/homonoidian/synthax/blob/ae3bddeafc9a7fd139e46a7fd1e109a0c7689b7a/src/synthax/tree.cr#L219" target="_blank">View source</a>]
         
       </div>
     </div>
   
-
-
 
 
 </div>

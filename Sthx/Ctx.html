@@ -4,7 +4,7 @@
   <meta charset="utf-8" />
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="generator" content="Crystal Docs 1.9.2">
+<meta name="generator" content="Crystal Docs 1.10.1">
 <meta name="crystal_docs.project_version" content="trunk">
 <meta name="crystal_docs.project_name" content="synthax">
 
@@ -112,28 +112,13 @@
       
     </li>
   
-  <li class=" " data-id="synthax/Sthx/Rule/Empty" data-name="sthx::rule::empty">
-      <a href="../Sthx/Rule/Empty.html">Empty</a>
-      
-    </li>
-  
   <li class=" " data-id="synthax/Sthx/Rule/FromRange" data-name="sthx::rule::fromrange">
       <a href="../Sthx/Rule/FromRange.html">FromRange</a>
       
     </li>
   
-  <li class=" " data-id="synthax/Sthx/Rule/List" data-name="sthx::rule::list">
-      <a href="../Sthx/Rule/List.html">List</a>
-      
-    </li>
-  
-  <li class=" " data-id="synthax/Sthx/Rule/Mapping" data-name="sthx::rule::mapping">
-      <a href="../Sthx/Rule/Mapping.html">Mapping</a>
-      
-    </li>
-  
-  <li class=" " data-id="synthax/Sthx/Rule/One" data-name="sthx::rule::one">
-      <a href="../Sthx/Rule/One.html">One</a>
+  <li class=" " data-id="synthax/Sthx/Rule/Keep" data-name="sthx::rule::keep">
+      <a href="../Sthx/Rule/Keep.html">Keep</a>
       
     </li>
   
@@ -206,7 +191,7 @@
 <li><em>root</em> is the current root of the parse tree (see <code><a href="../Sthx/Tree.html">Tree</a></code>).</li>
 </ul>
 <p>Note that <code><a href="../Sthx/Ctx.html">Ctx</a></code> is a <em>mutable struct</em> if <em>reader</em> is interacted with,
-so try to be careful with that.</p>
+so beware of dragons.</p>
 
 
 
@@ -231,7 +216,7 @@ so try to be careful with that.</p>
   </h2>
   
     
-      <a href="https://github.com/homonoidian/synthax/blob/68b1eedd8428238126ce1b0596a41b82cd0091d0/src/synthax/ctx.cr#L9" target="_blank">
+      <a href="https://github.com/homonoidian/synthax/blob/ae3bddeafc9a7fd139e46a7fd1e109a0c7689b7a/src/synthax/ctx.cr#L9" target="_blank">
         synthax/ctx.cr
       </a>
     
@@ -258,6 +243,8 @@ so try to be careful with that.</p>
       </li>
     
   </ul>
+
+
 
 
 
@@ -322,7 +309,7 @@ so try to be careful with that.</p>
       </li>
     
       <li class="entry-summary">
-        <a href="#reroot%28id%3AString%29%3Aself-instance-method" class="signature"><strong>#reroot</strong>(id : String) : <span class="k">self</span></a>
+        <a href="#rebase%28id%3AString%29%3Aself-instance-method" class="signature"><strong>#rebase</strong>(id : String) : <span class="k">self</span></a>
         
           <div class="summary"><p>Returns a copy of this context where the root is set to be a tree with the given <em>id</em>.</p></div>
         
@@ -344,8 +331,6 @@ so try to be careful with that.</p>
 
 
 
-
-
 <div class="methods-inherited">
   
     
@@ -357,17 +342,26 @@ so try to be careful with that.</p>
     
 
 
-  
-    
-
-
-    
-
-
     
 
 
   
+    
+
+
+    
+
+
+    
+
+
+    
+
+
+  
+    
+
+
     
 
 
@@ -401,11 +395,13 @@ so try to be careful with that.</p>
       <br/>
       <div>
         
-          [<a href="https://github.com/homonoidian/synthax/blob/68b1eedd8428238126ce1b0596a41b82cd0091d0/src/synthax/ctx.cr#L9" target="_blank">View source</a>]
+          [<a href="https://github.com/homonoidian/synthax/blob/ae3bddeafc9a7fd139e46a7fd1e109a0c7689b7a/src/synthax/ctx.cr#L9" target="_blank">View source</a>]
         
       </div>
     </div>
   
+
+
 
 
 
@@ -439,7 +435,7 @@ and the picking of the reader which has the most progress out of
       <br/>
       <div>
         
-          [<a href="https://github.com/homonoidian/synthax/blob/68b1eedd8428238126ce1b0596a41b82cd0091d0/src/synthax/ctx.cr#L48" target="_blank">View source</a>]
+          [<a href="https://github.com/homonoidian/synthax/blob/ae3bddeafc9a7fd139e46a7fd1e109a0c7689b7a/src/synthax/ctx.cr#L48" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -460,7 +456,7 @@ and the picking of the reader which has the most progress out of
       <br/>
       <div>
         
-          [<a href="https://github.com/homonoidian/synthax/blob/68b1eedd8428238126ce1b0596a41b82cd0091d0/src/synthax/ctx.cr#L21" target="_blank">View source</a>]
+          [<a href="https://github.com/homonoidian/synthax/blob/ae3bddeafc9a7fd139e46a7fd1e109a0c7689b7a/src/synthax/ctx.cr#L21" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -481,7 +477,7 @@ and the picking of the reader which has the most progress out of
       <br/>
       <div>
         
-          [<a href="https://github.com/homonoidian/synthax/blob/68b1eedd8428238126ce1b0596a41b82cd0091d0/src/synthax/ctx.cr#L28" target="_blank">View source</a>]
+          [<a href="https://github.com/homonoidian/synthax/blob/ae3bddeafc9a7fd139e46a7fd1e109a0c7689b7a/src/synthax/ctx.cr#L28" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -497,7 +493,7 @@ and the picking of the reader which has the most progress out of
       <br/>
       <div>
         
-          [<a href="https://github.com/homonoidian/synthax/blob/68b1eedd8428238126ce1b0596a41b82cd0091d0/src/synthax/ctx.cr#L11" target="_blank">View source</a>]
+          [<a href="https://github.com/homonoidian/synthax/blob/ae3bddeafc9a7fd139e46a7fd1e109a0c7689b7a/src/synthax/ctx.cr#L11" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -513,7 +509,7 @@ and the picking of the reader which has the most progress out of
       <br/>
       <div>
         
-          [<a href="https://github.com/homonoidian/synthax/blob/68b1eedd8428238126ce1b0596a41b82cd0091d0/src/synthax/ctx.cr#L9" target="_blank">View source</a>]
+          [<a href="https://github.com/homonoidian/synthax/blob/ae3bddeafc9a7fd139e46a7fd1e109a0c7689b7a/src/synthax/ctx.cr#L9" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -529,7 +525,7 @@ and the picking of the reader which has the most progress out of
       <br/>
       <div>
         
-          [<a href="https://github.com/homonoidian/synthax/blob/68b1eedd8428238126ce1b0596a41b82cd0091d0/src/synthax/ctx.cr#L9" target="_blank">View source</a>]
+          [<a href="https://github.com/homonoidian/synthax/blob/ae3bddeafc9a7fd139e46a7fd1e109a0c7689b7a/src/synthax/ctx.cr#L9" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -550,7 +546,7 @@ and the picking of the reader which has the most progress out of
       <br/>
       <div>
         
-          [<a href="https://github.com/homonoidian/synthax/blob/68b1eedd8428238126ce1b0596a41b82cd0091d0/src/synthax/ctx.cr#L16" target="_blank">View source</a>]
+          [<a href="https://github.com/homonoidian/synthax/blob/ae3bddeafc9a7fd139e46a7fd1e109a0c7689b7a/src/synthax/ctx.cr#L16" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -569,12 +565,12 @@ and the picking of the reader which has the most progress out of
       </div>
     </div>
   
-    <div class="entry-detail" id="reroot(id:String):self-instance-method">
+    <div class="entry-detail" id="rebase(id:String):self-instance-method">
       <div class="signature">
         
-        def <strong>reroot</strong>(id : <a href="../String.html">String</a>) : <span class="k">self</span>
+        def <strong>rebase</strong>(id : <a href="../String.html">String</a>) : <span class="k">self</span>
 
-        <a class="method-permalink" href="#reroot%28id%3AString%29%3Aself-instance-method">#</a>
+        <a class="method-permalink" href="#rebase%28id%3AString%29%3Aself-instance-method">#</a>
       </div>
       
         <div class="doc">
@@ -586,7 +582,7 @@ tree with the given <em>id</em>.</p>
       <br/>
       <div>
         
-          [<a href="https://github.com/homonoidian/synthax/blob/68b1eedd8428238126ce1b0596a41b82cd0091d0/src/synthax/ctx.cr#L34" target="_blank">View source</a>]
+          [<a href="https://github.com/homonoidian/synthax/blob/ae3bddeafc9a7fd139e46a7fd1e109a0c7689b7a/src/synthax/ctx.cr#L34" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -622,13 +618,11 @@ tree spans up to the current position of the reader.</p>
       <br/>
       <div>
         
-          [<a href="https://github.com/homonoidian/synthax/blob/68b1eedd8428238126ce1b0596a41b82cd0091d0/src/synthax/ctx.cr#L40" target="_blank">View source</a>]
+          [<a href="https://github.com/homonoidian/synthax/blob/ae3bddeafc9a7fd139e46a7fd1e109a0c7689b7a/src/synthax/ctx.cr#L40" target="_blank">View source</a>]
         
       </div>
     </div>
   
-
-
 
 
 </div>

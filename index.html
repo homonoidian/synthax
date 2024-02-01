@@ -4,7 +4,7 @@
   <meta charset="utf-8" />
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="generator" content="Crystal Docs 1.9.2">
+<meta name="generator" content="Crystal Docs 1.10.1">
 <meta name="crystal_docs.project_version" content="trunk">
 <meta name="crystal_docs.project_name" content="synthax">
 
@@ -112,28 +112,13 @@
       
     </li>
   
-  <li class=" " data-id="synthax/Sthx/Rule/Empty" data-name="sthx::rule::empty">
-      <a href="Sthx/Rule/Empty.html">Empty</a>
-      
-    </li>
-  
   <li class=" " data-id="synthax/Sthx/Rule/FromRange" data-name="sthx::rule::fromrange">
       <a href="Sthx/Rule/FromRange.html">FromRange</a>
       
     </li>
   
-  <li class=" " data-id="synthax/Sthx/Rule/List" data-name="sthx::rule::list">
-      <a href="Sthx/Rule/List.html">List</a>
-      
-    </li>
-  
-  <li class=" " data-id="synthax/Sthx/Rule/Mapping" data-name="sthx::rule::mapping">
-      <a href="Sthx/Rule/Mapping.html">Mapping</a>
-      
-    </li>
-  
-  <li class=" " data-id="synthax/Sthx/Rule/One" data-name="sthx::rule::one">
-      <a href="Sthx/Rule/One.html">One</a>
+  <li class=" " data-id="synthax/Sthx/Rule/Keep" data-name="sthx::rule::keep">
+      <a href="Sthx/Rule/Keep.html">Keep</a>
       
     </li>
   
@@ -278,6 +263,9 @@ used (hence the dependency on <code>permafrost</code>).</p>
 <li>
 <p>For all else <a href="https://homonoidian.github.io/synthax/">see the docs</a></p>
 </li>
+<li>
+<p>See examples in the <code>examples/</code> directory.</p>
+</li>
 </ul>
 <h2><a id="capture-and-keep" class="anchor" href="#capture-and-keep">
   <svg class="octicon-link" aria-hidden="true">
@@ -285,11 +273,12 @@ used (hence the dependency on <code>permafrost</code>).</p>
   </svg>
 </a><code>capture</code> and <code>keep</code></h2>
 <p>A <code>Tree</code> has <em>children</em> (<code>0</code> to some <code>N</code> of them) and <em>mappings</em> (a string to string hash).</p>
-<p><code>capture(other, id)</code> lets you reroot the tree produced by <em>other</em> to a new <code>Tree</code>
-node with the given <em>id</em>.</p>
+<p><code>capture(other, id)</code> lets you store <code>capture</code>s and <code>keep</code>s produced by <em>other</em>
+within a new <code>Tree</code> object with the given <em>id</em>. There is always an implicit
+root tree. It is the parent of all top level captures and keeps.</p>
 <p><code>keep(other, id)</code> takes <em>the string</em> matched by <em>other</em> and creates the mapping
-of <em>id</em> to that string in the <code>capture</code> above. The tree produced by <em>other</em> is
-thrown away.</p>
+of <em>id</em> to that string in the current tree. The tree produced by <em>other</em> is
+discarded. It's like named capture in regex.</p>
 <h2><a id="performance" class="anchor" href="#performance">
   <svg class="octicon-link" aria-hidden="true">
     <use href="#octicon-link"/>
@@ -305,27 +294,38 @@ for that purpose.</p>
 <li>
 <p>No lexer means each character must be processed by rules on the heap. This also
 means that backtracking to explore another branch is much more expensive, requiring
-to repeatedly revisit parts of the string within a different context. The grammar
-driving the parsing instead of the string makes it a much more painful process,
-but this is the last place where I should write about that so let's move on.</p>
+to repeatedly revisit same parts of the string within a different context. The
+grammar driving the parsing instead of the string makes it a much more painful
+process in general (because the string always knows better). But indexing ain't
+quick too.</p>
 </li>
 <li>
-<p>There is nothing fancy or theoretical done here.</p>
+<p>Nothing fancy or theoretical is done here. The thing is extremely simple. Take
+a look at the source code yourself.</p>
 </li>
 </ul>
 <p>For 10mb JSON example (including <code>anify</code>):</p>
-<pre><code class="language-text">        JSON.parse  11.38  ( 87.90ms) (± 4.67%)  33.9MB/op        fastest
-Synthax JSON parse 974.49m (  1.03s ) (±15.50%)   418MB/op  11.67× slower</code></pre>
-<p>To test it yourself run <code>crystal run examples/json.cr -Dbenchmark --release</code></p>
+<pre><code class="language-text">        JSON.parse  11.34  ( 88.18ms) (± 4.69%)  33.9MB/op        fastest
+Synthax JSON parse   1.14  (877.00ms) (±10.46%)   409MB/op   9.95× slower</code></pre>
+<p>To run the benchmark yourself use: <code>crystal run examples/json.cr -Dbenchmark --release</code></p>
 <ul>
 <li>
 <p>Memory usage is horrible due to <code><a href="Sthx/Tree.html">Sthx::Tree</a></code> overhead and children array
-overhead when converting to <code>JSON::Any</code>, plus <code>JSON::Any</code> itself of course.</p>
+overhead when converting to <code>JSON::Any</code>, plus <code>JSON::Any</code> itself of course.
+The children array cna be eliminated if you visit the <code><a href="Sthx/Tree.html">Sthx::Tree</a></code> yourself,
+without using the convenience <code>Sthx::Tree#map</code> methods. You always know more
+than those methods, so make use of that.</p>
 </li>
 <li>
 <p>Parsing itself does not consume any memory because it's just recursively
-exploring a graph (if we don't count the call stack of course!) But you
-can't opt out of <code><a href="Sthx/Tree.html">Sthx::Tree</a></code> generation so haha live with it :)</p>
+exploring a graph (well, if we don't count the call stack of course!) But
+you can't opt out of <code><a href="Sthx/Tree.html">Sthx::Tree</a></code> generation so haha live with it :)</p>
+</li>
+<li>
+<p>I don't think it's currently possible to build something like that with generics,
+handling captures and all; it gets too nasty too soon. And generally, generics caused
+more Crystal language bugs than anything else for me, so I try not to venture
+too far into that territory.</p>
 </li>
 </ul>
 <h2><a id="development" class="anchor" href="#development">

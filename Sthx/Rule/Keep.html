@@ -4,7 +4,7 @@
   <meta charset="utf-8" />
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="generator" content="Crystal Docs 1.9.2">
+<meta name="generator" content="Crystal Docs 1.10.1">
 <meta name="crystal_docs.project_version" content="trunk">
 <meta name="crystal_docs.project_name" content="synthax">
 
@@ -14,7 +14,7 @@
 <script type="text/javascript" src="../../js/doc.js"></script>
 
   <meta name="repository-name" content="synthax">
-  <title>Sthx::Rule::List - synthax trunk</title>
+  <title>Sthx::Rule::Keep - synthax trunk</title>
   <script type="text/javascript">
     CrystalDocs.base_path = "../../";
   </script>
@@ -112,28 +112,13 @@
       
     </li>
   
-  <li class=" " data-id="synthax/Sthx/Rule/Empty" data-name="sthx::rule::empty">
-      <a href="../../Sthx/Rule/Empty.html">Empty</a>
-      
-    </li>
-  
   <li class=" " data-id="synthax/Sthx/Rule/FromRange" data-name="sthx::rule::fromrange">
       <a href="../../Sthx/Rule/FromRange.html">FromRange</a>
       
     </li>
   
-  <li class=" current" data-id="synthax/Sthx/Rule/List" data-name="sthx::rule::list">
-      <a href="../../Sthx/Rule/List.html">List</a>
-      
-    </li>
-  
-  <li class=" " data-id="synthax/Sthx/Rule/Mapping" data-name="sthx::rule::mapping">
-      <a href="../../Sthx/Rule/Mapping.html">Mapping</a>
-      
-    </li>
-  
-  <li class=" " data-id="synthax/Sthx/Rule/One" data-name="sthx::rule::one">
-      <a href="../../Sthx/Rule/One.html">One</a>
+  <li class=" current" data-id="synthax/Sthx/Rule/Keep" data-name="sthx::rule::keep">
+      <a href="../../Sthx/Rule/Keep.html">Keep</a>
       
     </li>
   
@@ -181,12 +166,12 @@
 <div class="main-content">
 <h1 class="type-name">
 
-  <span class="kind">abstract class</span> Sthx::<wbr>Rule::<wbr>List
+  <span class="kind">class</span> Sthx::<wbr>Rule::<wbr>Keep
 
 </h1>
 
 
-  <ul class="superclass-hierarchy"><li class="superclass"><a href="../../Sthx/Rule/List.html">Sthx::Rule::List</a></li><li class="superclass">Reference</li><li class="superclass">Object</li></ul>
+  <ul class="superclass-hierarchy"><li class="superclass"><a href="../../Sthx/Rule/Keep.html">Sthx::Rule::Keep</a></li><li class="superclass">Reference</li><li class="superclass">Object</li></ul>
 
 
 
@@ -200,7 +185,8 @@
     Overview
   </h2>
 
-  <p>A list of rules.</p>
+  <p>Captures the string matched by of a rule and saves it in the tree
+under a mapping with the specified id.</p>
 
 
 
@@ -224,22 +210,6 @@
 
 
 
-  <h2>
-    <a id="direct-known-subclasses" class="anchor" href="#direct-known-subclasses">
-  <svg class="octicon-link" aria-hidden="true">
-    <use href="#octicon-link"/>
-  </svg>
-</a>
-    Direct Known Subclasses
-  </h2>
-  <ul class="other-types-list">
-    
-      <li class="other-type"><a href="../../Sthx/Rule/Branch.html">Sthx::Rule::Branch</a></li>
-    
-      <li class="other-type"><a href="../../Sthx/Rule/Chain.html">Sthx::Rule::Chain</a></li>
-    
-  </ul>
-
 
 
 
@@ -255,7 +225,7 @@
   </h2>
   
     
-      <a href="https://github.com/homonoidian/synthax/blob/68b1eedd8428238126ce1b0596a41b82cd0091d0/src/synthax/rule.cr#L103" target="_blank">
+      <a href="https://github.com/homonoidian/synthax/blob/ae3bddeafc9a7fd139e46a7fd1e109a0c7689b7a/src/synthax/rule.cr#L62" target="_blank">
         synthax/rule.cr
       </a>
     
@@ -277,11 +247,13 @@
   <ul class="list-summary">
     
       <li class="entry-summary">
-        <a href="#new%28rules%3ACore%3A%3ALinkedList%28Rule%29%29-class-method" class="signature"><strong>.new</strong>(rules : Core::LinkedList(Rule))</a>
+        <a href="#new%28rule%3ARule%2Cid%3AString%29-class-method" class="signature"><strong>.new</strong>(rule : Rule, id : String)</a>
         
       </li>
     
   </ul>
+
+
 
 
 
@@ -298,15 +270,13 @@
   <ul class="list-summary">
     
       <li class="entry-summary">
-        <a href="#append%28rule%3ARule%29%3Aself-instance-method" class="signature"><strong>#append</strong>(rule : Rule) : <span class="k">self</span></a>
+        <a href="#eval%28ctx%3ACtx%29%3ACtx%7CErr-instance-method" class="signature"><strong>#eval</strong>(ctx : Ctx) : Ctx | Err</a>
         
-          <div class="summary"><p>Adds another <em>rule</em> to the end of this list.</p></div>
+          <div class="summary"><p>Evaluates this rule within the given parser context <em>ctx</em>.</p></div>
         
       </li>
     
   </ul>
-
-
 
 
 
@@ -338,7 +308,7 @@
     
   
     <a href="../../Sthx/Rule.html#eval%28ctx%3ACtx%29%3ACtx%7CErr-instance-method" class="tooltip">
-      <span>eval(ctx : Ctx) : Ctx | Err<br/>eval(ctx : Ctx, & : Ctx -> Ctx | Err) : Ctx | Err</span>
+      <span>eval(ctx : Ctx) : Ctx | Err</span>
     eval</a>
     
   
@@ -374,17 +344,26 @@
   
 
 
-  
-    
-
-
-    
-
-
     
 
 
   
+    
+
+
+    
+
+
+    
+
+
+    
+
+
+  
+    
+
+
     
 
 
@@ -407,22 +386,24 @@
     Constructor Detail
   </h2>
   
-    <div class="entry-detail" id="new(rules:Core::LinkedList(Rule))-class-method">
+    <div class="entry-detail" id="new(rule:Rule,id:String)-class-method">
       <div class="signature">
         
-        def self.<strong>new</strong>(rules : Core::LinkedList(<a href="../../Sthx/Rule.html">Rule</a>))
+        def self.<strong>new</strong>(rule : <a href="../../Sthx/Rule.html">Rule</a>, id : <a href="../../String.html">String</a>)
 
-        <a class="method-permalink" href="#new%28rules%3ACore%3A%3ALinkedList%28Rule%29%29-class-method">#</a>
+        <a class="method-permalink" href="#new%28rule%3ARule%2Cid%3AString%29-class-method">#</a>
       </div>
       
       <br/>
       <div>
         
-          [<a href="https://github.com/homonoidian/synthax/blob/68b1eedd8428238126ce1b0596a41b82cd0091d0/src/synthax/rule.cr#L106" target="_blank">View source</a>]
+          [<a href="https://github.com/homonoidian/synthax/blob/ae3bddeafc9a7fd139e46a7fd1e109a0c7689b7a/src/synthax/rule.cr#L65" target="_blank">View source</a>]
         
       </div>
     </div>
   
+
+
 
 
 
@@ -437,29 +418,31 @@
     Instance Method Detail
   </h2>
   
-    <div class="entry-detail" id="append(rule:Rule):self-instance-method">
+    <div class="entry-detail" id="eval(ctx:Ctx):Ctx|Err-instance-method">
       <div class="signature">
         
-        def <strong>append</strong>(rule : <a href="../../Sthx/Rule.html">Rule</a>) : <span class="k">self</span>
+        def <strong>eval</strong>(ctx : <a href="../../Sthx/Ctx.html">Ctx</a>) : <a href="../../Sthx/Ctx.html">Ctx</a> | <a href="../../Sthx/Err.html">Err</a>
 
-        <a class="method-permalink" href="#append%28rule%3ARule%29%3Aself-instance-method">#</a>
+        <a class="method-permalink" href="#eval%28ctx%3ACtx%29%3ACtx%7CErr-instance-method">#</a>
       </div>
       
         <div class="doc">
           
-          <p>Adds another <em>rule</em> to the end of this list.</p>
+            <div class="doc-inherited">
+              Description copied from module <a href="../../Sthx/Rule.html">Sthx::Rule</a>
+            </div>
+          
+          <p>Evaluates this rule within the given parser context <em>ctx</em>.</p>
         </div>
       
       <br/>
       <div>
         
-          [<a href="https://github.com/homonoidian/synthax/blob/68b1eedd8428238126ce1b0596a41b82cd0091d0/src/synthax/rule.cr#L110" target="_blank">View source</a>]
+          [<a href="https://github.com/homonoidian/synthax/blob/ae3bddeafc9a7fd139e46a7fd1e109a0c7689b7a/src/synthax/rule.cr#L68" target="_blank">View source</a>]
         
       </div>
     </div>
   
-
-
 
 
 </div>
