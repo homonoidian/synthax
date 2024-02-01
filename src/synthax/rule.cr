@@ -53,7 +53,7 @@ module Sthx
       end
 
       def eval(ctx : Ctx) : Ctx | Err
-        @rule.eval(ctx.reroot(@id)) { |sub| ctx.adopt(sub) }
+        @rule.eval(ctx.rebase(@id)) { |sub| ctx.adopt(sub) }
       end
     end
 
@@ -66,7 +66,7 @@ module Sthx
       end
 
       def eval(ctx : Ctx) : Ctx | Err
-        @rule.eval(ctx.reroot(@id)) do |sub|
+        @rule.eval(ctx.rebase(@id)) do |sub|
           span = sub.reader.pos - ctx.reader.pos
           substring = String.build(span) do |io|
             span.times do

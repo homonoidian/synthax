@@ -31,14 +31,14 @@ module Sthx
 
     # Returns a copy of this context where the root is set to be a
     # tree with the given *id*.
-    def reroot(id : String) : self
+    def rebase(id : String) : self
       copy_with(root: Tree.new(id, @reader.pos))
     end
 
     # Returns a "reading-terminated" copy of this context where the root
     # tree spans up to the current position of the reader.
     def terminate : self
-      copy_with(root: @root.with_span_to(@reader))
+      copy_with(root: @root.span(to: @reader))
     end
 
     # Returns a copy of this context which has *other* adopted. *Adoption*

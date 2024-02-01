@@ -41,13 +41,19 @@ module Sthx
       @children[index]
     end
 
+    # Returns *index*-th child of this tree, or `nil` if this tree has no
+    # child at *index*.
+    def []?(index : Int) : Tree?
+      @children[index]?
+    end
+
     # :nodoc:
     def with(k : String, v : String)
       Tree.new(@id, @begin, @span, @children, @mappings.assoc(k, v))
     end
 
     # :nodoc:
-    def with_span_to(reader : Char::Reader) : Tree
+    def span(*, to reader : Char::Reader) : Tree
       Tree.new(@id, @begin, reader.pos - @begin, @children, @mappings)
     end
 
