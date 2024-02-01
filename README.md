@@ -93,16 +93,19 @@ json = element
 
 - For all else [see the docs](https://homonoidian.github.io/synthax/)
 
+- See examples in the `examples/` directory.
+
 ## `capture` and `keep`
 
 A `Tree` has *children* (`0` to some `N` of them) and *mappings* (a string to string hash).
 
-`capture(other, id)` lets you reroot the tree produced by *other* to a new `Tree`
-node with the given *id*.
+`capture(other, id)` lets you store `capture`s and `keep`s produced by *other*
+within a new `Tree` object with the given *id*. There is always an implicit
+root tree. It is the parent of all top level captures and keeps.
 
 `keep(other, id)` takes *the string* matched by *other* and creates the mapping
-of *id* to that string in the `capture` above. The tree produced by *other* is
-thrown away.
+of *id* to that string in the current tree. The tree produced by *other* is
+discarded. It's like named capture in regex.
 
 ## Performance
 
@@ -116,27 +119,37 @@ for that purpose.
 
 - No lexer means each character must be processed by rules on the heap. This also
   means that backtracking to explore another branch is much more expensive, requiring
-  to repeatedly revisit parts of the string within a different context. The grammar
-  driving the parsing instead of the string makes it a much more painful process,
-  but this is the last place where I should write about that so let's move on.
+  to repeatedly revisit same parts of the string within a different context. The
+  grammar driving the parsing instead of the string makes it a much more painful
+  process in general (because the string always knows better). But indexing ain't
+  quick too.
 
-- There is nothing fancy or theoretical done here.
+- Nothing fancy or theoretical is done here. The thing is extremely simple. Take
+  a look at the source code yourself.
 
 For 10mb JSON example (including `anify`):
 
 ```text
-        JSON.parse  11.38  ( 87.90ms) (± 4.67%)  33.9MB/op        fastest
-Synthax JSON parse 974.49m (  1.03s ) (±15.50%)   418MB/op  11.67× slower
+        JSON.parse  11.34  ( 88.18ms) (± 4.69%)  33.9MB/op        fastest
+Synthax JSON parse   1.14  (877.00ms) (±10.46%)   409MB/op   9.95× slower
 ```
 
-To test it yourself run `crystal run examples/json.cr -Dbenchmark --release`
+To run the benchmark yourself use: `crystal run examples/json.cr -Dbenchmark --release`
 
 - Memory usage is horrible due to `Sthx::Tree` overhead and children array
   overhead when converting to `JSON::Any`, plus `JSON::Any` itself of course.
+  The children array cna be eliminated if you visit the `Sthx::Tree` yourself,
+  without using the convenience `Sthx::Tree#map` methods. You always know more
+  than those methods, so make use of that.
 
 - Parsing itself does not consume any memory because it's just recursively
-  exploring a graph (if we don't count the call stack of course!) But you
-  can't opt out of `Sthx::Tree` generation so haha live with it :)
+  exploring a graph (well, if we don't count the call stack of course!) But
+  you can't opt out of `Sthx::Tree` generation so haha live with it :)
+
+- I don't think it's currently possible to build something like that with generics,
+  handling captures and all; it gets too nasty too soon. And generally, generics caused
+  more Crystal language bugs than anything else for me, so I try not to venture
+  too far into that territory.
 
 ## Development
 
