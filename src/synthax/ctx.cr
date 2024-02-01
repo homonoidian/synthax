@@ -5,7 +5,7 @@ module Sthx
   # - *root* is the current root of the parse tree (see `Tree`).
   #
   # Note that `Ctx` is a *mutable struct* if *reader* is interacted with,
-  # so try to be careful with that.
+  # so beware of dragons.
   record Ctx, reader : Char::Reader, root : Tree do
     # Returns the current character of this context's reader.
     def char : Char

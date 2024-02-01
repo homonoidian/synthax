@@ -3,30 +3,10 @@ module Sthx
     # Evaluates this rule within the given parser context *ctx*.
     abstract def eval(ctx : Ctx) : Ctx | Err
 
+    # :nodoc:
     def eval(ctx : Ctx, & : Ctx -> Ctx | Err) : Ctx | Err
       result = eval(ctx)
-      result.is_a?(Ctx) ? yield result : return result
-    end
-
-    # Represents the empty rule.
-    struct Empty
-      include Rule
-
-      def eval(ctx : Ctx) : Ctx | Err
-        ctx
-      end
-    end
-
-    # Parses a single character.
-    struct One
-      include Rule
-
-      def initialize(@char : Char)
-      end
-
-      def eval(ctx : Ctx) : Ctx | Err
-        ctx.char == @char ? ctx.advance : Err.new(ctx)
-      end
+      result.is_a?(Ctx) ? yield result : result
     end
 
     # Parses a single character from the specified character range.
@@ -59,7 +39,7 @@ module Sthx
       end
 
       def eval(ctx : Ctx) : Ctx | Err
-        raise NotImplementedError.new("no matching put() for Rule.ahead") unless rule = @rule
+        raise NotImplementedError.new("ahead: no matching put()") unless rule = @rule
 
         rule.eval(ctx)
       end
@@ -79,7 +59,7 @@ module Sthx
 
     # Captures the string matched by of a rule and saves it in the tree
     # under a mapping with the specified id.
-    class Mapping
+    class Keep
       include Rule
 
       def initialize(@rule : Rule, @id : String)
@@ -99,24 +79,16 @@ module Sthx
       end
     end
 
-    # A list of rules.
-    abstract class List
+    # A sequence of rules. If a preceding rule fails the consecutive ones
+    # will not match.
+    struct Chain
       include Rule
 
       def initialize(@rules : Core::LinkedList(Rule))
       end
 
-      # Adds another *rule* to the end of this list.
-      def append(rule : Rule) : self
-        self.class.new(@rules.push(rule))
-      end
-    end
-
-    # A sequence of rules. If a preceding rule fails the consecutive ones
-    # will not match.
-    class Chain < List
       def &(other)
-        append(Rule.from(other))
+        Chain.new(@rules.push(Rule.from(other)))
       end
 
       def eval(ctx : Ctx) : Ctx | Err
@@ -128,9 +100,14 @@ module Sthx
     end
 
     # A choice of multiple rules. If one fails the next one is tried.
-    class Branch < List
+    struct Branch
+      include Rule
+
+      def initialize(@rules : Core::LinkedList(Rule))
+      end
+
       def |(other)
-        append(Rule.from(other))
+        Branch.new(@rules.push(Rule.from(other)))
       end
 
       def eval(ctx : Ctx) : Ctx | Err
@@ -201,7 +178,7 @@ module Sthx
     # Rule.from('a') # => one('a')
     # ```
     def self.from(object : Char)
-      One.new(object)
+      FromRange.new(object..object)
     end
 
     # Creates a `Rule` from the given `String` *object*.
@@ -213,13 +190,11 @@ module Sthx
     # Rule.from("foo") # => one('f') & one('o') & one('o')
     # ```
     def self.from(object : String)
-      rule = Empty.new
-      reader = Char::Reader.new(object)
-      while reader.has_next?
-        rule &= reader.current_char
-        reader.next_char
+      rule = nil
+      object.each_char do |char|
+        rule = rule ? rule & from(char) : from(char)
       end
-      rule
+      rule.not_nil!
     end
 
     # Creates a `Rule` from the given character range *object*. Any
@@ -265,7 +240,7 @@ module Sthx
     # Defines a tree mapping called *id* whose value is the underlying
     # string content of *other*.
     def self.keep(other, id : String)
-      Mapping.new(from(other), id)
+      Keep.new(from(other), id)
     end
 
     # Repeats `self` a number of *times*.
