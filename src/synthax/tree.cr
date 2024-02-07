@@ -1,15 +1,37 @@
 module Sthx
   class Tree
+    private struct ChildrenIndexable
+      include Indexable(Tree)
+
+      def initialize(@children : Pf::Map(Int32, Tree))
+      end
+
+      def size : Int
+        @children.size
+      end
+
+      def unsafe_fetch(index : Int) : Tree
+        @children[index]
+      end
+    end
+
     # Returns the capture id of this tree (see `Rule.capture`).
     getter id : String
 
-    # Returns the index of the first character of this tree in the
-    # source string.
+    # Returns the index of the first *character* (not byte!) of this tree
+    # in the source string.
     getter begin : Int32
 
-    def initialize(@id, @begin, @span = 0,
-                   @children = Pf::Map(Int32, Tree).new,
-                   @mappings = Pf::Map(String, String).new)
+    # Returns the amount of characters (not bytes!) that this tree matches
+    # in the source string.
+    getter span : Int32
+
+    def initialize(
+      @id, @begin,
+      @span = 0,
+      @children = Pf::Map(Int32, Tree).new,
+      @attributes = Pf::Map(String, String).new
+    )
     end
 
     protected def visit(haystack : Hash(String, T.class)) : T forall T
@@ -18,48 +40,99 @@ module Sthx
       cls.new(self, children)
     end
 
-    # Returns the index of the last character of this tree in the
-    # source string.
+    # :nodoc:
+    def span(*, to index : Int) : Tree
+      raise ArgumentError.new unless index > @begin
+
+      Tree.new(@id, @begin, index - @begin, @children, @attributes)
+    end
+
+    # Returns the index of the *character* (not byte!) immediately following
+    # the last character of this tree in the source string.
     def end : Int32
       @begin + @span
     end
 
-    # Returns the value of the given *mapping* on this tree. See `Rule.keep`.
-    # For examples see `map`.
-    def [](mapping : String) : String
-      @mappings[mapping]
+    # Returns an `Indexable` over this tree's children.
+    #
+    # ```
+    # # tree : Tree
+    #
+    # tree.children[0]   # => Tree
+    # tree.children.size # => Int
+    # tree.children.each do |child|
+    #   pp child # => Tree
+    # end
+    #
+    # # ...
+    # ```
+    def children : Indexable(Tree)
+      ChildrenIndexable.new(@children)
     end
 
-    # Returns the value of the given *mapping* on this tree. Returns nil if
-    # the mapping does not exist. See `Rule.keep`. For examples see `map`.
-    def []?(mapping : String) : String?
-      @mappings[mapping]?
+    # Returns the value of an attribute with the given *name*, if one is defined
+    # on this tree. Otherwise, returns `nil`. Attributes are usually defined using
+    # `Rule.keep`.
+    def getattr?(name : String) : String?
+      @attributes[name]?
     end
 
-    # Returns *index*-th child of this tree.
-    def [](index : Int) : Tree
-      @children[index]
+    # Same as `getattr?`, but raises `KeyError` if the attribute was not found.
+    def getattr(name : String) : String
+      getattr?(name) || raise KeyError.new
     end
 
-    # Returns *index*-th child of this tree, or `nil` if this tree has no
-    # child at *index*.
-    def []?(index : Int) : Tree?
-      @children[index]?
+    # Returns a copy of this tree where an attribute with the given *name*
+    # has the value of *value*.
+    def setattr(name : String, value : String)
+      Tree.new(@id, @begin, @span, @children, @attributes.assoc(name, value))
     end
 
     # :nodoc:
-    def with(k : String, v : String)
-      Tree.new(@id, @begin, @span, @children, @mappings.assoc(k, v))
+    def dig?(step : Int) : Tree?
+      @children[step]?
     end
 
     # :nodoc:
-    def span(*, to reader : Char::Reader) : Tree
-      Tree.new(@id, @begin, reader.pos - @begin, @children, @mappings)
+    def dig?(step : String) : Tree?
+      children.find { |child| child.id == step }
+    end
+
+    # Follows deeper into the tree guided by the provided *steps*. Returns the
+    # final tree, or `nil` if could not follow one of the steps.
+    #
+    # The following types of steps are available:
+    #
+    # - `String`: follow to a child whose id is equal to the given string.
+    # - `Int`: follow to a child whose index in the parent tree is equal to
+    #   the given integer.
+    #
+    # ```
+    # # tree : Tree
+    # tree.dig?("range", ":begin:", 0) # => Tree?
+    # tree.dig?("foo", 0, "bar")       # => Tree?
+    # ```
+    def dig?(*steps) : Tree?
+      return unless tree = dig?(steps[0])
+
+      dig?(*steps[1..])
+    end
+
+    # Same as `[]?`, but raises `KeyError` when it is impossible to follow one
+    # of the specified *steps*.
+    #
+    # ```
+    # # tree : Tree
+    # tree.dig("range", ":begin:", 0) # => Tree
+    # tree.dig("foo", 0, "bar")       # => Tree
+    # ```
+    def dig(*steps) : Tree
+      dig?(*steps) || raise KeyError.new
     end
 
     # :nodoc:
     def adopt(child : Tree) : Tree
-      Tree.new(@id, @begin, @span, @children.assoc(@children.size, child), @mappings)
+      Tree.new(@id, @begin, @span, @children.assoc(@children.size, child), @attributes)
     end
 
     # Converts `self` into subclass instances of the given class *cls*.
@@ -194,25 +267,38 @@ module Sthx
     # end
     # ```
     def map(cls : T.class, &fn : Tree, Array(T) -> T) : T forall T
-      fn.call(self, (0...@children.size).map { |index| @children[index].map(cls, &fn) })
+      fn.call(self, children.map { |child| child.map(cls, &fn) })
     end
 
-    # Appends a string view of this tree to *io*.
-    def inspect(io, indent = 0)
-      ws = " " * indent
-      io << ws << @id << " ⸢" << @begin << "-" << @begin + @span << "⸥ "
-      unless @mappings.empty?
-        io << '{'
-        @mappings.join(io, ", ") do |(k, v)|
-          io << '"' << k << "\" => "
+    protected def inspect(io, inner, outer)
+      io << inner << " " << @id << " ⸢" << self.begin << "-" << self.end << '⸥'
+      unless @attributes.empty?
+        io << " "
+        @attributes.join(io, ' ') do |(k, v)|
+          io << k << "="
           v.inspect(io)
         end
-        io << '}'
       end
       io << '\n'
-      (0...@children.size).each do |index|
-        @children[index].inspect(io, indent: indent + 2)
+
+      remaining = @children.size
+
+      children.each do |child|
+        if remaining == 1
+          io << outer << "└─"
+          new_outer = outer + "   "
+        else
+          io << outer << "├─"
+          new_outer = outer + "│  "
+        end
+        child.inspect(io, inner, new_outer)
+        remaining -= 1
       end
+    end
+
+    # Appends a multiline string view of this tree to *io*.
+    def inspect(io)
+      inspect(io, inner: "", outer: " ")
     end
 
     # Same as `inspect`.

@@ -39,13 +39,13 @@ def parse(string)
   string.apply!(JSON_G, exact: true).map(JSON::Any) do |tree, children|
     case tree.id
     when "root"   then children[0]
-    when "number" then JSON::Any.new(tree["number:value"].to_f64)
-    when "string" then JSON::Any.new(tree["string:value"])
+    when "number" then JSON::Any.new(tree.getattr("number:value").to_f64)
+    when "string" then JSON::Any.new(tree.getattr("string:value"))
     when "true"   then JSON::Any.new(true)
     when "false"  then JSON::Any.new(false)
     when "null"   then JSON::Any.new(nil)
     when "array"  then JSON::Any.new(children)
-    when "pair"   then JSON::Any.new({tree["string:value"] => children[0]})
+    when "pair"   then JSON::Any.new({tree.getattr("string:value") => children[0]})
     when "object"
       JSON::Any.new(children.reduce({} of String => JSON::Any) { |a, b| a.merge!(b.as_h) })
     else

@@ -41,13 +41,13 @@ def anify(json, string)
   root.map(JSON::Any) do |tree, children|
     case tree.id
     when "root"   then children[0]
-    when "number" then JSON::Any.new(tree["number:value"].to_f64)
-    when "string" then JSON::Any.new(tree["string:value"])
+    when "number" then JSON::Any.new(tree.getattr("number:value").to_f64)
+    when "string" then JSON::Any.new(tree.getattr("string:value"))
     when "true"   then JSON::Any.new(true)
     when "false"  then JSON::Any.new(false)
     when "null"   then JSON::Any.new(nil)
     when "array"  then JSON::Any.new(children)
-    when "pair"   then JSON::Any.new({tree["string:value"] => children[0]})
+    when "pair"   then JSON::Any.new({tree.getattr("string:value") => children[0]})
     when "object"
       JSON::Any.new(children.reduce({} of String => JSON::Any) { |a, b| a.merge!(b.as_h) })
     else
@@ -60,5 +60,18 @@ describe Sthx do
   it "parses 10mb JSON in the same way as Crystal's JSON" do
     string = File.read("#{__DIR__}/data/10mb.json")
     (anify(json, string) == JSON.parse(string)).should be_true
+  end
+
+  it "uses character index in tree" do
+    x = capture((0x0020..0x10FFFF), "x")
+    xs = sep(x, by: '.')
+    str = "f.o.👋.x.😼.e.♞.s.h.e.r.e.🦊.?"
+    tree = str.apply!(xs)
+    str.size.should eq(tree.span)
+    i = 0
+    tree.children.each do |child|
+      str[i].to_s.should eq(str[child.begin...child.end])
+      i += 2
+    end
   end
 end

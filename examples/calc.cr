@@ -30,7 +30,7 @@ abstract class Node
     end
 
     def self.new(tree, children)
-      new(tree["value"].to_f64)
+      new(tree.getattr("value").to_f64)
     end
 
     def eval(env)
@@ -43,7 +43,7 @@ abstract class Node
     end
 
     def self.new(tree, children)
-      new(tree["id"])
+      new(tree.getattr("id"))
     end
 
     def eval(env)
@@ -56,7 +56,7 @@ abstract class Node
     end
 
     def self.new(tree, children)
-      new(tree["op"], children[0], children[1])
+      new(tree.getattr("op"), children[0], children[1])
     end
 
     def eval(env)
@@ -76,7 +76,7 @@ abstract class Node
     end
 
     def self.new(tree, children)
-      new(tree["name"], children[0])
+      new(tree.getattr("name"), children[0])
     end
 
     def eval(env)

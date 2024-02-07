@@ -67,14 +67,14 @@ module Sthx
 
       def eval(ctx : Ctx) : Ctx | Err
         @rule.eval(ctx.rebase(@id)) do |sub|
-          span = sub.reader.pos - ctx.reader.pos
+          span = sub.progress - ctx.progress
           substring = String.build(span) do |io|
             span.times do
-              io << ctx.reader.current_char
-              ctx.reader.next_char
+              io << ctx.char
+              ctx.advance
             end
           end
-          ctx.copy_with(root: ctx.root.with(@id, substring))
+          ctx.copy_with(root: ctx.root.setattr(@id, substring))
         end
       end
     end

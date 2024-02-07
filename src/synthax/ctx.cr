@@ -12,9 +12,10 @@ module Sthx
       @reader.current_char
     end
 
-    # Returns this context's progress (position) within the source string.
+    # Returns this context's progress (position) within the source string,
+    # a *character* index (not byte!).
     def progress : Int32
-      @reader.pos
+      @reader.string.byte_index_to_char_index(@reader.pos) || raise IndexError.new
     end
 
     # Advances this reader one character forward.
@@ -32,13 +33,13 @@ module Sthx
     # Returns a copy of this context where the root is set to be a
     # tree with the given *id*.
     def rebase(id : String) : self
-      copy_with(root: Tree.new(id, @reader.pos))
+      copy_with(root: Tree.new(id, progress))
     end
 
     # Returns a "reading-terminated" copy of this context where the root
     # tree spans up to the current position of the reader.
     def terminate : self
-      copy_with(root: @root.span(to: @reader))
+      copy_with(root: @root.span(to: progress))
     end
 
     # Returns a copy of this context which has *other* adopted. *Adoption*
