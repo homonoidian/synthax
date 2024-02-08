@@ -115,10 +115,10 @@ module Sthx
     def dig?(*steps) : Tree?
       return unless tree = dig?(steps[0])
 
-      dig?(*steps[1..])
+      tree.dig?(*steps[1..])
     end
 
-    # Same as `[]?`, but raises `KeyError` when it is impossible to follow one
+    # Same as `dig?`, but raises `KeyError` when it is impossible to follow one
     # of the specified *steps*.
     #
     # ```

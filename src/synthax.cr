@@ -11,7 +11,7 @@ require "./synthax/ext"
 
 # Synthax is a simple parser synthesizer DSL for Crystal.
 module Sthx
-  VERSION = "0.2.1"
+  VERSION = "0.2.2"
 
   # :nodoc:
   module Core

@@ -67,7 +67,7 @@ describe Sthx do
     xs = sep(x, by: '.')
     str = "f.o.👋.x.😼.e.♞.s.h.e.r.e.🦊.?"
     tree = str.apply!(xs)
-    str.size.should eq(tree.span)
+    tree.span.should eq(str.size)
     i = 0
     tree.children.each do |child|
       str[i].to_s.should eq(str[child.begin...child.end])
