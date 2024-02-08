@@ -97,8 +97,18 @@
       
     </li>
   
-  <li class=" current" data-id="synthax/Sthx/Rule/Branch" data-name="sthx::rule::branch">
+  <li class="parent open current" data-id="synthax/Sthx/Rule/Branch" data-name="sthx::rule::branch">
       <a href="../../Sthx/Rule/Branch.html">Branch</a>
+      
+        <ul>
+  
+  <li class=" " data-id="synthax/Sthx/Rule/Branch/Mode" data-name="sthx::rule::branch::mode">
+      <a href="../../Sthx/Rule/Branch/Mode.html">Mode</a>
+      
+    </li>
+  
+</ul>
+
       
     </li>
   
@@ -224,7 +234,7 @@
   </h2>
   
     
-      <a href="https://github.com/homonoidian/synthax/blob/8f4f0ac8935ae925ebe4d339d59aa341ceedd0a8/src/synthax/rule.cr#L103" target="_blank">
+      <a href="https://github.com/homonoidian/synthax/blob/a32dd659ec7c5210fd4a4c0eb92d13cdabaa69a4/src/synthax/rule.cr#L103" target="_blank">
         synthax/rule.cr
       </a>
     
@@ -246,7 +256,7 @@
   <ul class="list-summary">
     
       <li class="entry-summary">
-        <a href="#new%28rules%3ACore%3A%3ALinkedList%28Rule%29%29-class-method" class="signature"><strong>.new</strong>(rules : Core::LinkedList(Rule))</a>
+        <a href="#new%28rules%3AArray%28Rule%29%2Cmode%3ASthx%3A%3ARule%3A%3ABranch%3A%3AMode%3DMode%3A%3ASeq%29-class-method" class="signature"><strong>.new</strong>(rules : Array(Rule), mode : Sthx::Rule::Branch::Mode = <span class="t">Mode</span><span class="t">::</span><span class="t">Seq</span>)</a>
         
       </li>
     
@@ -339,13 +349,18 @@
     
   
     <a href="../../Sthx/Rule.html#from%28object%3AChar%29-class-method" class="tooltip">
-      <span>from(object : Char)<br/>from(object : String)<br/>from(object : Range(Char, Char))<br/>from(object : Range(Int, Int))</span>
+      <span>from(object : Char)<br/>from(object : Range(Char, Char))<br/>from(object : Range(Int, Int))<br/>from(object : String)</span>
     from</a>, 
     
   
-    <a href="../../Sthx/Rule.html#keep%28other%2Cid%3AString%29-class-method" class="tooltip">
-      <span>keep(other, id : String)</span>
-    keep</a>
+    <a href="../../Sthx/Rule.html#keep%28other%2Cname%3AString%29-class-method" class="tooltip">
+      <span>keep(other, name : String)</span>
+    keep</a>, 
+    
+  
+    <a href="../../Sthx/Rule.html#tourney%28%2Arules%3ARule%29-class-method" class="tooltip">
+      <span>tourney(*rules : Rule)</span>
+    tourney</a>
     
   
 
@@ -405,18 +420,18 @@
     Constructor Detail
   </h2>
   
-    <div class="entry-detail" id="new(rules:Core::LinkedList(Rule))-class-method">
+    <div class="entry-detail" id="new(rules:Array(Rule),mode:Sthx::Rule::Branch::Mode=Mode::Seq)-class-method">
       <div class="signature">
         
-        def self.<strong>new</strong>(rules : Core::LinkedList(<a href="../../Sthx/Rule.html">Rule</a>))
+        def self.<strong>new</strong>(rules : Array(<a href="../../Sthx/Rule.html">Rule</a>), mode : <a href="../../Sthx/Rule/Branch/Mode.html">Sthx::Rule::Branch::Mode</a> = <span class="t">Mode</span><span class="t">::</span><span class="t">Seq</span>)
 
-        <a class="method-permalink" href="#new%28rules%3ACore%3A%3ALinkedList%28Rule%29%29-class-method">#</a>
+        <a class="method-permalink" href="#new%28rules%3AArray%28Rule%29%2Cmode%3ASthx%3A%3ARule%3A%3ABranch%3A%3AMode%3DMode%3A%3ASeq%29-class-method">#</a>
       </div>
       
       <br/>
       <div>
         
-          [<a href="https://github.com/homonoidian/synthax/blob/8f4f0ac8935ae925ebe4d339d59aa341ceedd0a8/src/synthax/rule.cr#L106" target="_blank">View source</a>]
+          [<a href="https://github.com/homonoidian/synthax/blob/a32dd659ec7c5210fd4a4c0eb92d13cdabaa69a4/src/synthax/rule.cr#L111" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -452,7 +467,8 @@
             </div>
           
           <p>Asserts that either <code>self</code> or <em>other</em> must match for a match to occur,
-in that order.</p>
+in that order. This is most useful for simple alternatives. For more
+ambiguous alternatives a tourney branch can be useful, see <code>tourney</code>.</p>
 <pre><code class="language-crystal">xy <span class="o">=</span> <span class="t">Rule</span>.from(<span class="s">&#39;x&#39;</span>) <span class="o">|</span> <span class="t">Rule</span>.from(<span class="s">&#39;y&#39;</span>)
 <span class="s">&quot;&quot;</span>.apply?(xy)  <span class="c"># =&gt; nil</span>
 <span class="s">&quot;x&quot;</span>.apply?(xy) <span class="c"># =&gt; Tree</span>
@@ -463,7 +479,7 @@ in that order.</p>
       <br/>
       <div>
         
-          [<a href="https://github.com/homonoidian/synthax/blob/8f4f0ac8935ae925ebe4d339d59aa341ceedd0a8/src/synthax/rule.cr#L109" target="_blank">View source</a>]
+          [<a href="https://github.com/homonoidian/synthax/blob/a32dd659ec7c5210fd4a4c0eb92d13cdabaa69a4/src/synthax/rule.cr#L114" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -488,7 +504,7 @@ in that order.</p>
       <br/>
       <div>
         
-          [<a href="https://github.com/homonoidian/synthax/blob/8f4f0ac8935ae925ebe4d339d59aa341ceedd0a8/src/synthax/rule.cr#L113" target="_blank">View source</a>]
+          [<a href="https://github.com/homonoidian/synthax/blob/a32dd659ec7c5210fd4a4c0eb92d13cdabaa69a4/src/synthax/rule.cr#L118" target="_blank">View source</a>]
         
       </div>
     </div>

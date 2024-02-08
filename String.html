@@ -97,8 +97,18 @@
       
     </li>
   
-  <li class=" " data-id="synthax/Sthx/Rule/Branch" data-name="sthx::rule::branch">
+  <li class="parent " data-id="synthax/Sthx/Rule/Branch" data-name="sthx::rule::branch">
       <a href="Sthx/Rule/Branch.html">Branch</a>
+      
+        <ul>
+  
+  <li class=" " data-id="synthax/Sthx/Rule/Branch/Mode" data-name="sthx::rule::branch::mode">
+      <a href="Sthx/Rule/Branch/Mode.html">Mode</a>
+      
+    </li>
+  
+</ul>
+
       
     </li>
   
@@ -313,7 +323,7 @@ remove the offending byte sequences first.</p>
   </h2>
   
     
-      <a href="https://github.com/homonoidian/synthax/blob/8f4f0ac8935ae925ebe4d339d59aa341ceedd0a8/src/synthax/ext.cr#L14" target="_blank">
+      <a href="https://github.com/homonoidian/synthax/blob/a32dd659ec7c5210fd4a4c0eb92d13cdabaa69a4/src/synthax/ext.cr#L14" target="_blank">
         synthax/ext.cr
       </a>
     
@@ -362,7 +372,7 @@ remove the offending byte sequences first.</p>
       </li>
     
       <li class="entry-summary">
-        <a href="#apply%28rule%3ASthx%3A%3ARule%2C%2A%2Coffset%3D0%2Cexact%3Dfalse%2Corigin%3D%22root%22%29%3ASthx%3A%3ACtx%7CSthx%3A%3AErr-instance-method" class="signature"><strong>#apply</strong>(rule : Sthx::Rule, *, offset = <span class="n">0</span>, exact = <span class="n">false</span>, origin = <span class="s">&quot;root&quot;</span>) : Sthx::Ctx | Sthx::Err</a>
+        <a href="#apply%28rule%3ASthx%3A%3ARule%2C%2A%2Coffset%3D0%2Cexact%3Dfalse%2Croot%3D%22root%22%29%3ASthx%3A%3ACtx%7CSthx%3A%3AErr-instance-method" class="signature"><strong>#apply</strong>(rule : Sthx::Rule, *, offset = <span class="n">0</span>, exact = <span class="n">false</span>, root = <span class="s">&quot;root&quot;</span>) : Sthx::Ctx | Sthx::Err</a>
         
           <div class="summary"><p>Parses this string using <em>rule</em>.</p></div>
         
@@ -371,21 +381,21 @@ remove the offending byte sequences first.</p>
       <li class="entry-summary">
         <a href="#apply%28other%2C%2A%2Akwargs%29-instance-method" class="signature"><strong>#apply</strong>(other, **kwargs)</a>
         
-          <div class="summary"><p>Converts <em>other</em> into a rule using <code><a href="Sthx/Rule.html#from%28object%3AChar%29-class-method">Sthx::Rule.from</a></code>, otherwise the same as <code><a href="String.html#apply%28rule%3ASthx%3A%3ARule%2C%2A%2Coffset%3D0%2Cexact%3Dfalse%2Corigin%3D%22root%22%29%3ASthx%3A%3ACtx%7CSthx%3A%3AErr-instance-method">#apply</a></code>.</p></div>
+          <div class="summary"><p>Converts <em>other</em> into a rule using <code><a href="Sthx/Rule.html#from%28object%3AChar%29-class-method">Sthx::Rule.from</a></code>, otherwise the same as <code><a href="String.html#apply%28rule%3ASthx%3A%3ARule%2C%2A%2Coffset%3D0%2Cexact%3Dfalse%2Croot%3D%22root%22%29%3ASthx%3A%3ACtx%7CSthx%3A%3AErr-instance-method">#apply</a></code>.</p></div>
         
       </li>
     
       <li class="entry-summary">
         <a href="#apply%21%28%2Aargs%2C%2A%2Akwargs%29%3ASthx%3A%3ATree-instance-method" class="signature"><strong>#apply!</strong>(*args, **kwargs) : Sthx::Tree</a>
         
-          <div class="summary"><p>Same as <code><a href="String.html#apply%3F%28%2Aargs%2C%2A%2Akwargs%29%3ASthx%3A%3ATree%7CNil-instance-method">#apply?</a></code> but raises <code>SyntaxError</code> instead of returning <code>nil</code>.</p></div>
+          <div class="summary"><p>Same as <code><a href="String.html#apply%3F%28%2Aargs%2C%2A%2Akwargs%29%3ASthx%3A%3ATree%7CNil-instance-method">#apply?</a></code> but raises <code><a href="Sthx/SyntaxError.html">Sthx::SyntaxError</a></code> instead of returning <code>nil</code> if parsing failed.</p></div>
         
       </li>
     
       <li class="entry-summary">
         <a href="#apply%3F%28%2Aargs%2C%2A%2Akwargs%29%3ASthx%3A%3ATree%7CNil-instance-method" class="signature"><strong>#apply?</strong>(*args, **kwargs) : Sthx::Tree | Nil</a>
         
-          <div class="summary"><p>Same as <code><a href="String.html#apply%28rule%3ASthx%3A%3ARule%2C%2A%2Coffset%3D0%2Cexact%3Dfalse%2Corigin%3D%22root%22%29%3ASthx%3A%3ACtx%7CSthx%3A%3AErr-instance-method">#apply</a></code> but returns the resulting parse tree, or <code>nil</code> if parsing failed.</p></div>
+          <div class="summary"><p>Same as <code><a href="String.html#apply%28rule%3ASthx%3A%3ARule%2C%2A%2Coffset%3D0%2Cexact%3Dfalse%2Croot%3D%22root%22%29%3ASthx%3A%3ACtx%7CSthx%3A%3AErr-instance-method">#apply</a></code> but returns the resulting parse tree, or <code>nil</code> if parsing failed.</p></div>
         
       </li>
     
@@ -468,7 +478,7 @@ remove the offending byte sequences first.</p>
       <br/>
       <div>
         
-          [<a href="https://github.com/homonoidian/synthax/blob/8f4f0ac8935ae925ebe4d339d59aa341ceedd0a8/src/synthax/ext.cr#L15" target="_blank">View source</a>]
+          [<a href="https://github.com/homonoidian/synthax/blob/a32dd659ec7c5210fd4a4c0eb92d13cdabaa69a4/src/synthax/ext.cr#L15" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -489,7 +499,7 @@ remove the offending byte sequences first.</p>
       <br/>
       <div>
         
-          [<a href="https://github.com/homonoidian/synthax/blob/8f4f0ac8935ae925ebe4d339d59aa341ceedd0a8/src/synthax/ext.cr#L15" target="_blank">View source</a>]
+          [<a href="https://github.com/homonoidian/synthax/blob/a32dd659ec7c5210fd4a4c0eb92d13cdabaa69a4/src/synthax/ext.cr#L15" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -510,41 +520,40 @@ remove the offending byte sequences first.</p>
       <br/>
       <div>
         
-          [<a href="https://github.com/homonoidian/synthax/blob/8f4f0ac8935ae925ebe4d339d59aa341ceedd0a8/src/synthax/ext.cr#L15" target="_blank">View source</a>]
+          [<a href="https://github.com/homonoidian/synthax/blob/a32dd659ec7c5210fd4a4c0eb92d13cdabaa69a4/src/synthax/ext.cr#L15" target="_blank">View source</a>]
         
       </div>
     </div>
   
-    <div class="entry-detail" id="apply(rule:Sthx::Rule,*,offset=0,exact=false,origin=&quot;root&quot;):Sthx::Ctx|Sthx::Err-instance-method">
+    <div class="entry-detail" id="apply(rule:Sthx::Rule,*,offset=0,exact=false,root=&quot;root&quot;):Sthx::Ctx|Sthx::Err-instance-method">
       <div class="signature">
         
-        def <strong>apply</strong>(rule : <a href="Sthx/Rule.html">Sthx::Rule</a>, *, offset = <span class="n">0</span>, exact = <span class="n">false</span>, origin = <span class="s">&quot;root&quot;</span>) : <a href="Sthx/Ctx.html">Sthx::Ctx</a> | <a href="Sthx/Err.html">Sthx::Err</a>
+        def <strong>apply</strong>(rule : <a href="Sthx/Rule.html">Sthx::Rule</a>, *, offset = <span class="n">0</span>, exact = <span class="n">false</span>, root = <span class="s">&quot;root&quot;</span>) : <a href="Sthx/Ctx.html">Sthx::Ctx</a> | <a href="Sthx/Err.html">Sthx::Err</a>
 
-        <a class="method-permalink" href="#apply%28rule%3ASthx%3A%3ARule%2C%2A%2Coffset%3D0%2Cexact%3Dfalse%2Corigin%3D%22root%22%29%3ASthx%3A%3ACtx%7CSthx%3A%3AErr-instance-method">#</a>
+        <a class="method-permalink" href="#apply%28rule%3ASthx%3A%3ARule%2C%2A%2Coffset%3D0%2Cexact%3Dfalse%2Croot%3D%22root%22%29%3ASthx%3A%3ACtx%7CSthx%3A%3AErr-instance-method">#</a>
       </div>
       
         <div class="doc">
           
-          <p>Parses this string using <em>rule</em>. Returns the resulting parse context
-<code>Ctx</code> if parsing succeeded, or <code>Err</code> if parsing failed.</p>
-<p>All subtrees (captures) are rooted under a tree with the id given
-by <em>origin</em>.</p>
+          <p>Parses this string using <em>rule</em>. Returns the parse context <code>Ctx</code> that made
+most progress if one is available, or similarly the furthest <code>Err</code>.</p>
+<p>All subtrees (captures) are rooted under a tree with the id given by <em>root</em>.</p>
 <ul>
-<li><em>rule</em> is the rule to parse.</li>
-<li><em>offset</em> specifies the index of the character (as in <code>#[]</code>) where
-to begin matching <em>rule</em>.</li>
-<li><em>exact</em> specifies whether the resulting match should encompass
-this string entirely.</li>
-<li><em>origin</em> is the id that should be used for the root of the tree.</li>
+<li><em>rule</em> is the rule to apply.</li>
+<li><em>offset</em> specifies the index of the character (as in <code>#[]</code>) in this string
+where to begin applying <em>rule</em>.</li>
+<li><em>exact</em> specifies whether <em>rule</em> should be expected to consume this string
+entirely; this not being so is treated as an error.</li>
+<li><em>root</em> is the id that should be used for the root of the capture tree.</li>
 </ul>
-<pre><code class="language-crystal"><span class="s">&quot;foo&quot;</span>.apply(<span class="s">&quot;foo&quot;</span>) <span class="c"># =&gt; Ctx(reader : Char::Reader, tree : Tree)</span>
+<pre><code class="language-crystal"><span class="s">&quot;foo&quot;</span>.apply(<span class="s">&quot;foo&quot;</span>) <span class="c"># =&gt; Ctx(..., tree : Sthx::Tree)</span>
 <span class="s">&quot;foo&quot;</span>.apply(<span class="s">&quot;bar&quot;</span>) <span class="c"># =&gt; Err(ctx : Ctx)</span></code></pre>
         </div>
       
       <br/>
       <div>
         
-          [<a href="https://github.com/homonoidian/synthax/blob/8f4f0ac8935ae925ebe4d339d59aa341ceedd0a8/src/synthax/ext.cr#L34" target="_blank">View source</a>]
+          [<a href="https://github.com/homonoidian/synthax/blob/a32dd659ec7c5210fd4a4c0eb92d13cdabaa69a4/src/synthax/ext.cr#L33" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -560,13 +569,13 @@ this string entirely.</li>
         <div class="doc">
           
           <p>Converts <em>other</em> into a rule using <code><a href="Sthx/Rule.html#from%28object%3AChar%29-class-method">Sthx::Rule.from</a></code>, otherwise
-the same as <code><a href="String.html#apply%28rule%3ASthx%3A%3ARule%2C%2A%2Coffset%3D0%2Cexact%3Dfalse%2Corigin%3D%22root%22%29%3ASthx%3A%3ACtx%7CSthx%3A%3AErr-instance-method">#apply</a></code>.</p>
+the same as <code><a href="String.html#apply%28rule%3ASthx%3A%3ARule%2C%2A%2Coffset%3D0%2Cexact%3Dfalse%2Croot%3D%22root%22%29%3ASthx%3A%3ACtx%7CSthx%3A%3AErr-instance-method">#apply</a></code>.</p>
         </div>
       
       <br/>
       <div>
         
-          [<a href="https://github.com/homonoidian/synthax/blob/8f4f0ac8935ae925ebe4d339d59aa341ceedd0a8/src/synthax/ext.cr#L43" target="_blank">View source</a>]
+          [<a href="https://github.com/homonoidian/synthax/blob/a32dd659ec7c5210fd4a4c0eb92d13cdabaa69a4/src/synthax/ext.cr#L42" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -581,15 +590,16 @@ the same as <code><a href="String.html#apply%28rule%3ASthx%3A%3ARule%2C%2A%2Coff
       
         <div class="doc">
           
-          <p>Same as <code><a href="String.html#apply%3F%28%2Aargs%2C%2A%2Akwargs%29%3ASthx%3A%3ATree%7CNil-instance-method">#apply?</a></code> but raises <code>SyntaxError</code> instead of returning <code>nil</code>.</p>
-<pre><code class="language-crystal"><span class="s">&quot;foo&quot;</span>.apply!(<span class="s">&quot;foo&quot;</span>) <span class="c"># =&gt; Tree</span>
-<span class="s">&quot;foo&quot;</span>.apply!(<span class="s">&quot;bar&quot;</span>) <span class="c"># =&gt; raises SyntaxError</span></code></pre>
+          <p>Same as <code><a href="String.html#apply%3F%28%2Aargs%2C%2A%2Akwargs%29%3ASthx%3A%3ATree%7CNil-instance-method">#apply?</a></code> but raises <code><a href="Sthx/SyntaxError.html">Sthx::SyntaxError</a></code> instead of returning <code>nil</code>
+if parsing failed.</p>
+<pre><code class="language-crystal"><span class="s">&quot;foo&quot;</span>.apply!(<span class="s">&quot;foo&quot;</span>, root: <span class="s">&quot;program&quot;</span>) <span class="c"># =&gt; program ⸢0-3⸥</span>
+<span class="s">&quot;foo&quot;</span>.apply!(<span class="s">&quot;bar&quot;</span>, root: <span class="s">&quot;program&quot;</span>) <span class="c"># =&gt; raises Sthx::SyntaxError</span></code></pre>
         </div>
       
       <br/>
       <div>
         
-          [<a href="https://github.com/homonoidian/synthax/blob/8f4f0ac8935ae925ebe4d339d59aa341ceedd0a8/src/synthax/ext.cr#L67" target="_blank">View source</a>]
+          [<a href="https://github.com/homonoidian/synthax/blob/a32dd659ec7c5210fd4a4c0eb92d13cdabaa69a4/src/synthax/ext.cr#L67" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -604,16 +614,16 @@ the same as <code><a href="String.html#apply%28rule%3ASthx%3A%3ARule%2C%2A%2Coff
       
         <div class="doc">
           
-          <p>Same as <code><a href="String.html#apply%28rule%3ASthx%3A%3ARule%2C%2A%2Coffset%3D0%2Cexact%3Dfalse%2Corigin%3D%22root%22%29%3ASthx%3A%3ACtx%7CSthx%3A%3AErr-instance-method">#apply</a></code> but returns the resulting parse tree, or <code>nil</code> if
+          <p>Same as <code><a href="String.html#apply%28rule%3ASthx%3A%3ARule%2C%2A%2Coffset%3D0%2Cexact%3Dfalse%2Croot%3D%22root%22%29%3ASthx%3A%3ACtx%7CSthx%3A%3AErr-instance-method">#apply</a></code> but returns the resulting parse tree, or <code>nil</code> if
 parsing failed.</p>
-<pre><code class="language-crystal"><span class="s">&quot;foo&quot;</span>.apply?(<span class="s">&quot;foo&quot;</span>) <span class="c"># =&gt; Tree</span>
-<span class="s">&quot;foo&quot;</span>.apply?(<span class="s">&quot;bar&quot;</span>) <span class="c"># =&gt; nil</span></code></pre>
+<pre><code class="language-crystal"><span class="s">&quot;foo&quot;</span>.apply?(<span class="s">&quot;foo&quot;</span>, root: <span class="s">&quot;program&quot;</span>) <span class="c"># =&gt; program ⸢0-3⸥</span>
+<span class="s">&quot;foo&quot;</span>.apply?(<span class="s">&quot;bar&quot;</span>, root: <span class="s">&quot;program&quot;</span>) <span class="c"># =&gt; nil</span></code></pre>
         </div>
       
       <br/>
       <div>
         
-          [<a href="https://github.com/homonoidian/synthax/blob/8f4f0ac8935ae925ebe4d339d59aa341ceedd0a8/src/synthax/ext.cr#L54" target="_blank">View source</a>]
+          [<a href="https://github.com/homonoidian/synthax/blob/a32dd659ec7c5210fd4a4c0eb92d13cdabaa69a4/src/synthax/ext.cr#L53" target="_blank">View source</a>]
         
       </div>
     </div>
