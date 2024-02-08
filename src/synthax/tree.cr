@@ -41,7 +41,7 @@ module Sthx
     end
 
     # :nodoc:
-    def span(*, to index : Int) : Tree
+    def terminate(*, at index : Int) : Tree
       raise ArgumentError.new unless index > @begin
 
       Tree.new(@id, @begin, index - @begin, @children, @attributes)

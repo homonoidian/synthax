@@ -39,7 +39,7 @@ module Sthx
     # Returns a "reading-terminated" copy of this context where the root
     # tree spans up to the current position of the reader.
     def terminate : self
-      copy_with(root: @root.span(to: progress))
+      copy_with(root: @root.terminate(at: progress))
     end
 
     # Returns a copy of this context which has *other* adopted. *Adoption*

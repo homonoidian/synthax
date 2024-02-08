@@ -74,4 +74,36 @@ describe Sthx do
       i += 2
     end
   end
+
+  it "supports tourney for choosing the most progressed ctx" do
+    x = capture("xxx", "x")
+    y = capture("xxxy", "y")
+    foo = tourney(x, y)
+    pp "xxx".apply!(foo)
+    pp "xxxy".apply!(foo)
+    bar = x | y
+    "xxx".apply?(foo, exact: true).try(&.dig?("x")).should be_a(Sthx::Tree)
+    "xxxy".apply?(foo, exact: true).try(&.dig?("y")).should be_a(Sthx::Tree)
+    "xxx".apply?(bar, exact: true).try(&.dig?("x")).should be_a(Sthx::Tree)
+    "xxxy".apply?(bar, exact: true).should be_nil
+  end
+
+  it "supports tourney with more than three arguments" do
+    a = capture("x", "a")
+    b = capture("xx", "b")
+    c = capture("xxx", "c")
+    d = capture("xxxx", "d")
+    foo = tourney(a, b, c)
+    bar = tourney(a, b, c, d)
+
+    "x".apply!(foo, exact: true).dig?("a").should be_a(Sthx::Tree)
+    "xx".apply!(foo, exact: true).dig?("b").should be_a(Sthx::Tree)
+    "xxx".apply!(foo, exact: true).dig?("c").should be_a(Sthx::Tree)
+    "xxxx".apply?(foo, exact: true).should be_nil
+
+    "x".apply!(bar, exact: true).dig?("a").should be_a(Sthx::Tree)
+    "xx".apply!(bar, exact: true).dig?("b").should be_a(Sthx::Tree)
+    "xxx".apply!(bar, exact: true).dig?("c").should be_a(Sthx::Tree)
+    "xxxx".apply!(bar, exact: true).dig?("d").should be_a(Sthx::Tree)
+  end
 end

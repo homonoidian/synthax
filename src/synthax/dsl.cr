@@ -3,7 +3,7 @@ module Sthx
     extend self
 
     # See the same method in `Rule`.
-    delegate :ahead, :capture, :keep, to: Rule
+    delegate :ahead, :capture, :keep, :tourney, to: Rule
 
     # Returns a literal *string* capture rule (capture whose name is the
     # same as the captrued *string*).
@@ -13,18 +13,18 @@ module Sthx
     #
     # "true".apply!(boolean)
     # # => root ⸢0-4⸥
-    # #      true ⸢0-4⸥
+    # #    └─ true ⸢0-4⸥
     #
     # "false".apply!(boolean)
     # # => root ⸢0-5⸥
-    # #      false ⸢0-5⸥
+    # #    └─ false ⸢0-5⸥
     # ```
     def lit(string : String) : Rule
       capture(string, string)
     end
 
     # Creates a capture with the same name as the given *var* (which should
-    # be the name of a variable holding the captured rule).
+    # be the name of a variable that stores the captured rule).
     #
     # ```
     # boolean = keep("true" | "false", "literal")
@@ -33,20 +33,21 @@ module Sthx
     #
     # "true".apply!(value)
     # # => root ⸢0-4⸥
-    # #      boolean ⸢0-4⸥ {"literal" => "true"}
+    # #    └─ boolean ⸢0-4⸥ literal="true"
     #
     # "false".apply!(value)
     # # => root ⸢0-5⸥
-    # #      boolean ⸢0-5⸥ {"literal" => "false"}
+    # #    └─ boolean ⸢0-5⸥ literal="false"
     #
     # "null".apply!(value)
     # # => root ⸢0-4⸥
-    # #      null ⸢0-4⸥
+    # #    └─ null ⸢0-4⸥
     # ```
     macro capture(var)
       {% unless var.is_a?(Var) %}
-        {% raise "expected an id (got '#{var}'), did you perhaps mean capture(..., ...)?" %}
+        {% raise "expected a variable name (but got: '#{var}'), did you perhaps mean capture(..., ...)?" %}
       {% end %}
+
       capture({{var}}, "{{var.id}}")
     end
 
@@ -92,11 +93,11 @@ module Sthx
     end
 
     # Returns a rule that will match a list of one or more *exp*s (see `Rule.from`)
-    # separated by *sexp*s (same).
+    # separated by *sexp*s (see `Rule.from`).
     #
     # ```
     # foo = "foo"
-    # foos = sep(foo, by: some(' ') & "and" & some(' '))
+    # foos = sep(foo, by: many(' ') & "and" & many(' '))
     #
     # "".apply?(foos)                    # => nil
     # "foo".apply?(foos)                 # => Tree

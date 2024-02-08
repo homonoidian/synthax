@@ -14,25 +14,24 @@ end
 class ::String
   Sthx::Rule.def_dsl
 
-  # Parses this string using *rule*. Returns the resulting parse context
-  # `Ctx` if parsing succeeded, or `Err` if parsing failed.
+  # Parses this string using *rule*. Returns the parse context `Ctx` that made
+  # most progress if one is available, or similarly the furthest `Err`.
   #
-  # All subtrees (captures) are rooted under a tree with the id given
-  # by *origin*.
+  # All subtrees (captures) are rooted under a tree with the id given by *root*.
   #
-  # - *rule* is the rule to parse.
-  # - *offset* specifies the index of the character (as in `#[]`) where
-  #   to begin matching *rule*.
-  # - *exact* specifies whether the resulting match should encompass
-  #   this string entirely.
-  # - *origin* is the id that should be used for the root of the tree.
+  # - *rule* is the rule to apply.
+  # - *offset* specifies the index of the character (as in `#[]`) in this string
+  #   where to begin applying *rule*.
+  # - *exact* specifies whether *rule* should be expected to consume this string
+  #   entirely; this not being so is treated as an error.
+  # - *root* is the id that should be used for the root of the capture tree.
   #
   # ```
-  # "foo".apply("foo") # => Ctx(reader : Char::Reader, tree : Tree)
+  # "foo".apply("foo") # => Ctx(..., tree : Sthx::Tree)
   # "foo".apply("bar") # => Err(ctx : Ctx)
   # ```
-  def apply(rule : Sthx::Rule, *, offset = 0, exact = false, origin = "root") : Sthx::Ctx | Sthx::Err
-    ctx = Sthx::Ctx.new(root: Sthx::Tree.new(origin, offset), reader: Char::Reader.new(self, offset))
+  def apply(rule : Sthx::Rule, *, offset = 0, exact = false, root = "root") : Sthx::Ctx | Sthx::Err
+    ctx = Sthx::Ctx.new(root: Sthx::Tree.new(root, offset), reader: Char::Reader.new(self, offset))
     rule.eval(ctx) do |ctx|
       exact && !ctx.at_end? ? Sthx::Err.new(ctx) : ctx.terminate
     end
@@ -48,8 +47,8 @@ class ::String
   # parsing failed.
   #
   # ```
-  # "foo".apply?("foo") # => Tree
-  # "foo".apply?("bar") # => nil
+  # "foo".apply?("foo", root: "program") # => program ⸢0-3⸥
+  # "foo".apply?("bar", root: "program") # => nil
   # ```
   def apply?(*args, **kwargs) : Sthx::Tree?
     case result = apply(*args, **kwargs)
@@ -58,11 +57,12 @@ class ::String
     end
   end
 
-  # Same as `apply?` but raises `SyntaxError` instead of returning `nil`.
+  # Same as `apply?` but raises `Sthx::SyntaxError` instead of returning `nil`
+  # if parsing failed.
   #
   # ```
-  # "foo".apply!("foo") # => Tree
-  # "foo".apply!("bar") # => raises SyntaxError
+  # "foo".apply!("foo", root: "program") # => program ⸢0-3⸥
+  # "foo".apply!("bar", root: "program") # => raises Sthx::SyntaxError
   # ```
   def apply!(*args, **kwargs) : Sthx::Tree
     case result = apply(*args, **kwargs)

@@ -84,11 +84,11 @@ module Sthx
     struct Chain
       include Rule
 
-      def initialize(@rules : Core::LinkedList(Rule))
+      def initialize(@rules : Array(Rule))
       end
 
       def &(other)
-        Chain.new(@rules.push(Rule.from(other)))
+        Chain.new(@rules.dup.push(Rule.from(other)))
       end
 
       def eval(ctx : Ctx) : Ctx | Err
@@ -103,25 +103,42 @@ module Sthx
     struct Branch
       include Rule
 
-      def initialize(@rules : Core::LinkedList(Rule))
+      enum Mode
+        Seq
+        Tourney
+      end
+
+      def initialize(@rules : Array(Rule), @mode = Mode::Seq)
       end
 
       def |(other)
-        Branch.new(@rules.push(Rule.from(other)))
+        Branch.new(@rules.dup.push(Rule.from(other)))
       end
 
       def eval(ctx : Ctx) : Ctx | Err
-        err = nil
+        winner = nil
 
-        @rules.each do |rule|
-          result = rule.eval(ctx)
-          return result unless result.is_a?(Err)
-          if err.nil? || err.progress < result.progress
-            err = result
+        case @mode
+        in .seq?
+          # Sequential mode: try each branch in turn.
+          @rules.each do |rule|
+            result = rule.eval(ctx)
+            return result unless result.is_a?(Err)
+            next unless winner.nil? || winner.progress < result.progress
+            winner = result
+          end
+        in .tourney?
+          # Tourney mode: pick a Ctx with most progress out of all choices,
+          # or Err with most progress if no Ctxs.
+          @rules.each do |rule|
+            result = rule.eval(ctx)
+            next unless winner.nil? || winner.progress < result.progress
+            next if winner.is_a?(Ctx) && result.is_a?(Err)
+            winner = result
           end
         end
 
-        err.not_nil!
+        winner.not_nil!
       end
     end
 
@@ -166,43 +183,19 @@ module Sthx
     #
     # ```
     # expr = Rule.ahead
-    # expr.put('(' & expr*(0..1) & ')')
+    # expr.put('(' & maybe(expr) & ')')
     # ```
     def self.ahead
       Ahead.new
     end
 
     # Creates a `Rule` from the given `Char` *object*.
-    #
-    # ```
-    # Rule.from('a') # => one('a')
-    # ```
     def self.from(object : Char)
       FromRange.new(object..object)
     end
 
-    # Creates a `Rule` from the given `String` *object*.
-    #
-    # This works by joining the characters of the string in a chain
-    # (i.e. `"foo"` is the same as `'f' & 'o' & 'o'`).
-    #
-    # ```
-    # Rule.from("foo") # => one('f') & one('o') & one('o')
-    # ```
-    def self.from(object : String)
-      rule = nil
-      object.each_char do |char|
-        rule = rule ? rule & from(char) : from(char)
-      end
-      rule.not_nil!
-    end
-
-    # Creates a `Rule` from the given character range *object*. Any
-    # character that is in the range will be allowed.
-    #
-    # ```
-    # Rule.from('a'..'z') # => any('a'..'z')
-    # ```
+    # Creates a `Rule` from the given character range *object*. Any character
+    # that is in the range will match.
     def self.from(object : Range(Char, Char))
       FromRange.new(object)
     end
@@ -210,6 +203,18 @@ module Sthx
     # :ditto:
     def self.from(object : Range(Int, Int))
       from(Range.new(object.begin.chr, object.end.chr, object.exclusive?))
+    end
+
+    # Creates a `Rule` from the given `String` *object*.
+    #
+    # This works by joining the characters of the string in a chain (i.e. `"foo"`
+    # is the same as `'f' & 'o' & 'o'`).
+    def self.from(object : String)
+      rules = Array(Rule).new(object.size)
+      object.each_char do |char|
+        rules << from(char)
+      end
+      Chain.new(rules)
     end
 
     # :nodoc:
@@ -237,10 +242,41 @@ module Sthx
       Capture.new(from(other), id)
     end
 
-    # Defines a tree mapping called *id* whose value is the underlying
+    # Defines a tree attribute with the given *name* whose value is the underlying
     # string content of *other*.
-    def self.keep(other, id : String)
-      Keep.new(from(other), id)
+    #
+    # ```
+    # a = Rule.capture("a", "foo")
+    # b = Rule.capture("b", "bar")
+    # quux = Rule.keep(a | b, "match")
+    #
+    # # Note how the "foo" and "bar" capture subtrees are thrown away!
+    # "a".apply!(quux) # => root ⸢0-1⸥ match="a"
+    # "b".apply!(quux) # => root ⸢0-1⸥ match="b"
+    # ```
+    def self.keep(other, name : String)
+      Keep.new(from(other), name)
+    end
+
+    # Asserts that one of *rules* must match. If multiple rules match the winning
+    # one (the one that made most progress, i.e. read more source code than others)
+    # is picked.
+    #
+    # ```
+    # x = Rule.capture("xxx", "x")
+    # y = Rule.capture("xxxy", "y")
+    # foo = Rule.tourney(x, y)
+    #
+    # "xxx".apply!(foo)
+    # # => root ⸢0-3⸥
+    # #    └─ x ⸢0-3⸥
+    #
+    # "xxxy".apply!(foo)
+    # # => root ⸢0-4⸥
+    # #    └─ y ⸢0-4⸥
+    # ```
+    def self.tourney(*rules : Rule)
+      Branch.new([*rules] of Rule, mode: Branch::Mode::Tourney)
     end
 
     # Repeats `self` a number of *times*.
@@ -276,11 +312,12 @@ module Sthx
     # "yx".apply?(xy) # => nil
     # ```
     def &(other)
-      Chain.new(Core::LinkedList[as(Rule), Rule.from(other)])
+      Chain.new([self, Rule.from(other)] of Rule)
     end
 
     # Asserts that either `self` or *other* must match for a match to occur,
-    # in that order.
+    # in that order. This is most useful for simple alternatives. For more
+    # ambiguous alternatives a tourney branch can be useful, see `tourney`.
     #
     # ```
     # xy = Rule.from('x') | Rule.from('y')
@@ -290,7 +327,7 @@ module Sthx
     # "z".apply?(xy) # => nil
     # ```
     def |(other)
-      Branch.new(Core::LinkedList[as(Rule), Rule.from(other)])
+      Branch.new([self, Rule.from(other)] of Rule)
     end
 
     # Asserts that *other* must *not* match for `self` to match.
